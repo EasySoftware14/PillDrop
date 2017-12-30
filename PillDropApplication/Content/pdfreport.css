@@ -1,0 +1,104 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica,Arial,sans-serif;
+    color: #6f7072;
+}
+
+div.container {
+    width: auto;
+    margin: 0 20px;
+}
+
+img.logo {
+    height: 60px;
+    width: auto;
+}
+
+h1 {
+    font-size: 18px;
+    color: #001f4b;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #87919a;
+    line-height: 150%;
+    margin: 0;
+}
+
+h3 {
+    font-size: 12px;
+    font-weight: normal;
+    color: #001f4b;
+    line-height: 150%;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #B5BEC7;
+}
+
+table {
+    width: 100%;
+    border: 0;
+    font-size: 12px;
+}
+
+    table.pdfHeader {
+        border-bottom: 1px solid #B5BEC7;
+    }
+
+.padderTop {
+    padding-top: 20px;
+}
+
+.padderBottom {
+    padding-bottom: 20px!important;
+}
+
+tr.borderTop td {
+    border-top: 2px solid #B5BEC7!important;
+}
+.bold {
+    font-weight: bold!important;
+}
+table.reportData {
+    border-collapse: collapse;
+    border-bottom: 2px solid #B5BEC7;
+    margin-bottom: 20px;
+}
+
+    table.reportData tr th, table.reportData tr td {
+        padding: 10px;
+        border: 0;
+    }
+
+    table.reportData tr th {
+        text-align: left;
+        color: #001f4b;
+    }
+
+    table.reportData tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    table.reportData tr td {
+        border-top: 1px solid #B5BEC7;
+        margin: 0;
+        text-align: left;
+        color: #87919a;
+        font-weight: normal;
+    }
+
+.largeTable {
+    font-size: 8px;
+}
+table.largeTable tr th, table.largeTable tr td {
+    padding: 5px;
+    border: 0;
+}

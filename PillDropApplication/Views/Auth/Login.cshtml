@@ -1,0 +1,324 @@
+﻿@model PillDropApplication.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    ViewBag.Title = "Login";
+    ViewBag.Success = @TempData["Success"];
+    var tempFromEmail = @TempData["TempFromEmail"];
+    var showSuccess = ViewBag.Success != null;
+
+}
+
+<div class="modal fade" id="setupPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <i class="fa fa-exclamation-triangle fa-7x"></i>
+                <h4 class="semi-bold">You have successfully setup your username and password</h4>
+                <h4 class="semi-bold">Please press the confirm button to go to the login screen</h4>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                <a href="/auth/login" class="btn btn-success">Confirm</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("login", "auth", null, FormMethod.Post, new { @id = "login-form", @class = "login-form" }))
+{
+    <div class="col-md-9 col-md-offset-1">
+        <h2>
+            @(tempFromEmail != null ? Resources.TempPassword : Resources.FormMessage)
+        </h2>
+        <br />
+        <span class="error" ><label hidden=""> Invalid</label></span>
+        <div class="row" style=" height:90px;">
+            <div class="form-group col-md-5">
+                <div class="controls">
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        <input id="username" type="text" placeholder="@Resources.PlaceHolderUsername" title="@Resources.UsernameError" name="username" class="form-control login" tabindex="1" autocomplete="off"
+                               validemail="true" required="required" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-5">
+                <span class="help"></span>
+                <div class="controls">
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        <input id="password" type="password" autocomplete="off" placeholder="@Resources.PlaceHolderPassword" title="@Resources.PasswordError" name="password" class="form-control login" tabindex="2"
+                               minlength="6" required="required" passwordcheck="true" /> 
+                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                            <input type="hidden" name="tempPassword" value="@Model.TempPassword" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-1 btn-margined">
+                    <button class="btn btn-primary2 btn-cons pull-left" type="submit" tabindex="3">@Resources.Login</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group col-md-12 ">
+                    <div class="checkbox checkbox check-success">
+                        <input type="checkbox" id="rememberMe" value="true" name="persistAuthentication">
+                        <label for="rememberMe">@Resources.RememberMe</label>
+                        <a href="#" data-target='#forgotPasswordModal' data-toggle='modal' id="forgotemaillink">@Resources.ForgotPassword</a>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" value="false" name="persistAuthentication">
+            <input type="hidden" value="false" name="persistCulture">
+        </div>
+}
+
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style=" height:280px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <i class="fa fa-envelope fa-7x"></i>
+                <h4 id="myModalLabel" class="semi-bold">@Resources.EnterRegisteredEmail</h4>
+                <div id="invalidEmail" class="error" style="height: 20px;"> </div>
+
+                @using (Html.BeginForm("forgotpassword", "auth", null, FormMethod.Post, new { @id = "forgotpassword-form" }))
+                {
+                    <input type="text" name="forgotEmail" id="forgotEmail" title="@Resources.InvalidEmail" width="1500" @*aria-required="true"*@ autocomplete="on" validemail="true" required="required" />
+                }
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="Cancel">@Resources.Cancel</button>
+                <button type="submit" class="btn btn-success" id="forgotPasswordEmailSubmit">@Resources.Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="emailSentConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <h4 id="myModalLabel" class="semi-bold">@Resources.ResetPasswordMessage</h4>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="forgotPasswordRecoveryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style=" height:280px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <h4 id="myModalLabel" class="semi-bold">Answer the following question to receive your password.</h4>
+                <br>
+                <input type="hidden" id="validEmail" name="validEmail" />
+                <h4 id="myModalLabelQuestion" class="semi-bold"></h4>
+                <div id="invalidrecoveryAnswer" class="error" style="height: 20px;"> </div>
+                @using (Html.BeginForm("ForgotPassword", "User", null, FormMethod.Post, new { @id = "resetpassword-form" }))
+                {
+                    <label for="recoveryAnswer">Recovery prompt answer</label>
+                    <input type="Text" name="recoveryAnswer" id="recoveryAnswer" title="Please type in your answer" width="2500" autocomplete="off" required="required" />
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="Cancel">@Resources.Cancel</button>
+                <button type="button" class="btn btn-success" id="resetpasswordSubmit">@Resources.Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="recoveryEmailSentConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <h4 id="myModalLabel" class="semi-bold">Password Recovery Email sent.</h4>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <i class="fa fa-check-circle fa-7x"></i>
+                <h4 id="myModalLabel" class="semi-bold">Your new password is active and ready to use. Go on and login</h4>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="securityquestionwrongModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <i class="fa fa-check-circle fa-7x"></i>
+                <h4 id="myModalLabel" class="semi-bold">Your security question answer is wrong try again!.</h4>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="passwordnotmatchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <br>
+                <i class="fa fa-check-circle fa-7x"></i>
+                <h4 id="myModalLabel" class="semi-bold">Your password and temp password does not match try again!.</h4>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var success = '@showSuccess';
+        if (success == 'True')
+            $("#setupPasswordModal").modal({ backdrop: "static", keyboard: false });
+        if (success == 'securityquestionwrong')
+            $("#securityquestionwrongModal").modal({ backdrop: "static", keyboard: false });
+        if (success == 'passwordnotmatch')
+            $("#passwordnotmatchModal").modal({ backdrop: "static", keyboard: false });
+
+        var cookie = $.cookie("_culture");
+        var cookiePersisted = cookie.substring(cookie.length - 1) == 1;
+        if (cookiePersisted)
+            $("#rememberCulture").prop('checked', true);
+
+        $(".login").on("mousedown", function () {
+            $(".error label").empty();
+        });
+
+        $('#login-form').formValidationWrapper();
+        $('#forgotpassword-form').formValidationWrapper();
+        $('#forgotpassword-form').on('keypress', function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                $('#forgotPasswordEmailSubmit').click();
+            }
+        });
+
+        $('#forgotPasswordModal').on('hidden.bs.modal', function (e) {
+
+            $(this).validate().resetForm();
+            $(this).removeClass("has-error");
+            $(this).removeClass("error");
+            $("#forgotEmail").val("");
+        });
+
+
+        $("#forgotEmail").focusin(function () {
+            $("#invalidEmail").empty();
+        });
+        $("#recoveryAnswer").focusin(function () {
+            $("#invalidrecoveryAnswer").empty();
+        });
+        $("#Cancel").click(function () {
+            $("label.error").hide();
+            $(".error").removeClass("error");
+        });
+
+        $('#forgotPasswordEmailSubmit').click(function (e) {
+            if (!$("#forgotpassword-form").valid())
+                return;
+            var userEmail = $("#forgotEmail").val();
+
+            $('#forgotPasswordModal').css("cursor", "");
+            $.ajax({
+                type: "POST",
+                url: "/auth/forgotpassword/",
+                data: { email: userEmail },
+                success: function (result) {
+                    if (result.Success) {
+                        $('#forgotPasswordModal').modal('hide');
+                        $('#emailSentConfirmationModal').modal('show');
+
+                    } else {
+                        $("#invalidEmail").empty().append('<span id="invalidemailspan" style="color:red;">' + "@Resources.SpecifiedEmailNotRegistered" + '</span>').show();
+                    }
+                    $('#forgotPasswordModal').css("cursor", "");
+                    $("#forgotEmail").val("");
+                },
+                error: function (data) {
+
+                }
+            });
+        });
+        $('#resetpassword-form').formValidationWrapper();
+        $('#resetpassword-form').on('keypress', function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                $('#resetpasswordSubmit').click();
+            }
+        });
+
+
+        $('#resetpasswordSubmit').click(function (e) {
+            if (!$("#resetpassword-form").valid())
+                return;
+            var userEmail = $("#validEmail").val();
+            var userAnswer = $("#recoveryAnswer").val();
+
+            $('#forgotPasswordRecoveryQuestionModal').css("cursor", "");
+            $.ajax({
+                type: "POST",
+                url: "/user/ForgotPassword/",
+                data: { email: userEmail, answer: userAnswer },
+                success: function (result) {
+                    if (result.Success) {
+                        $('#forgotPasswordRecoveryQuestionModal').modal('hide');
+                        $('#emailSentConfirmationModal').modal('show');
+                    } else {
+                        $("#invalidrecoveryAnswer").empty().append('<span id="invalidrecoveryAnswerspan" style="color:red;">' + result.Description + '</span>').show();
+                    }
+                    $('#ValidateUserLoginSubmitModal').css("cursor", "");
+                    $("#recoveryAnswer").val("");
+                },
+                error: function (data) {
+
+                }
+            });
+        });
+
+    });
+</script>

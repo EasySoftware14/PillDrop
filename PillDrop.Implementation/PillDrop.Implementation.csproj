@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B4F56DC-8645-4D62-814D-7838DF301AE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PillDrop.Implementation</RootNamespace>
+    <AssemblyName>PillDrop.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\IDPNew\src\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.2\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.0.3\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow">
+      <HintPath>..\..\IDPNew\lib\NHibernate.Burrow.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.1.2\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.1.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\Criteria\EmailsToBeProcessedCriteria.cs" />
+    <Compile Include="Implementation\Criteria\GetAllUsersCriteria.cs" />
+    <Compile Include="Implementation\Criteria\RecoveryQuestionByIdCriteria.cs" />
+    <Compile Include="Implementation\Criteria\RecoveryQuestionsByCriteria.cs" />
+    <Compile Include="Implementation\Criteria\UserByEmailCriteria.cs" />
+    <Compile Include="Implementation\Criteria\UserForPasswordSetupCriteria.cs" />
+    <Compile Include="Implementation\Encription.cs" />
+    <Compile Include="Implementation\Extensions\StringExtensions.cs" />
+    <Compile Include="Implementation\Helpers\ApplicationConfiguration.cs" />
+    <Compile Include="Implementation\Helpers\AuditTrailListener.cs" />
+    <Compile Include="Implementation\Helpers\NHibernateHelper.cs" />
+    <Compile Include="Implementation\Helpers\NHibernateMapping.cs" />
+    <Compile Include="Implementation\MD5Hasher.cs" />
+    <Compile Include="Implementation\Repository\EmailArchiveRepository.cs" />
+    <Compile Include="Implementation\Repository\DemographicsRepository.cs" />
+    <Compile Include="Implementation\Repository\PillDropperRepository.cs" />
+    <Compile Include="Implementation\Repository\RecoveryQuestionRepository.cs" />
+    <Compile Include="Implementation\Repository\PatientRepository.cs" />
+    <Compile Include="Implementation\Services\EmailArchiveService.cs" />
+    <Compile Include="Implementation\Services\DemographicsService.cs" />
+    <Compile Include="Implementation\Services\RecoveryQuestionService.cs" />
+    <Compile Include="Implementation\Repository\Repository.cs" />
+    <Compile Include="Implementation\Repository\UserRepository.cs" />
+    <Compile Include="Implementation\Services\AuthenticationService.cs" />
+    <Compile Include="Implementation\Services\PillDropperService.cs" />
+    <Compile Include="Implementation\Services\PatientService.cs" />
+    <Compile Include="Implementation\Services\UserService.cs" />
+    <Compile Include="Persistence\DemographicsMap.cs" />
+    <Compile Include="Persistence\RecoveryQuestionMap.cs" />
+    <Compile Include="Persistence\PatientMap.cs" />
+    <Compile Include="Persistence\PillDropperMap.cs" />
+    <Compile Include="Persistence\UserMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PillDrop.Domain\PillDrop.Domain.csproj">
+      <Project>{E1D0BA52-BE4D-4DC3-922F-78117D043F54}</Project>
+      <Name>PillDrop.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

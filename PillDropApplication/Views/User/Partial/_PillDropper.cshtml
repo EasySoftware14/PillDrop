@@ -1,0 +1,73 @@
+﻿@model PillDrop.Domain.Presentation.UserModel
+
+@{
+    ViewBag.Heading1 = "Manage PillDroppers";
+    ViewBag.Title = "PillDropper";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("PillDropper", "User", null, FormMethod.Post, new { @id = "pilldropper-form", @class = "form", @Required = "required" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Name</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Surname</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Mobile Contact Number</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @Html.TextBoxFor(m => m.Number, new { @class = "form-control", @required = "required", @digits = true })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Email Address</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @*<input type="email" placeholder="Enter your email"  />*@
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required", @validemail = "true", @placeholder = "Enter your email" })
+                    </div>
+                </div>
+                <br />
+                <a href="/" id="close" class="btn btn-primary"> Cancel</a>
+                <button type="submit" class="btn btn-success"> Submit</button>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Licence Plate Number</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @Html.TextBoxFor(m => m.PillDropper.LicencePlateNumber, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Licence Number</label>
+                    <div class="input-with-icon right">
+                        <i class=""></i>
+                        @Html.TextBoxFor(m => m.PillDropper.LicenceNumber, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><span class="text-error">*</span> Vette Certificate ?</label>
+                    <div class="checkbox">
+                        <i class="cr-icon glyphicon glyphicon-ok"></i>
+                        @Html.CheckBoxFor(m => m.PillDropper.VetteCertificate, new { @class = "checkbox" })
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+

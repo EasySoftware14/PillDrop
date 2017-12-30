@@ -1,0 +1,84 @@
+﻿@{
+    //var fiaurl = System.Configuration.ConfigurationManager.AppSettings["fia_url"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body id="loginPage" class="error-body no-top">
+    <div class="header navbar navbar-inverse ">
+        <div class="navbar-inner">
+            <div class="login-header ">
+                <div class="header-quick-nav-login">
+                    <div id="loginLinks" class="pull-left">
+                        <figure class="img-pos">
+                            <img class="pull-left" src="~/images/icon/FIA_OTA.png" alt="Globe Icon" />
+                        </figure>
+                        <ul class="nav quick-section">
+                            <li class="quicklinks">
+                                <a href="#" target="_blank"><span>PillDrop Management System</span></a>
+                            </li>
+                           
+                        </ul>
+                       
+                    </div>
+                    @*@using (Html.BeginForm("SetCulture", "Auth"))
+                    {
+
+                    }*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row login-container column-seperation">
+            <figure class="logo-login-container col-md-9 col-md-offset-3">
+                <img src="/images/login/login.png" alt="FIA Logo"/>
+            </figure>
+            <div class="row  column-seperation">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/pilldrop")
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.language-selection').click(function() {
+                var newCulture = this.dataset.culture;
+                $.ajax({
+                    type: "POST",
+                    url: "/auth/setculture/",
+                    data: { culture: newCulture },
+                    success: function(result) {
+                        location.reload();
+                    },
+                    error: function(data) {
+                    }
+                });
+            });
+
+            $(document).ajaxStart(function () {
+                $.blockUI({ overlayCSS: { backgroundColor: '#000000' } });
+                $(".ajax-loader").show();
+            });
+
+            $(document).ajaxStop(function () {
+                $.unblockUI();
+                $(".ajax-loader").hide();
+            });
+
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+    <div class="ajax-loader" style="display: none !important;"></div>
+</body>
+</html>

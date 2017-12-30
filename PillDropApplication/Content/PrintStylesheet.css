@@ -1,0 +1,108 @@
+﻿body {
+    margin: 0;
+    padding: 50px 50px;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
+}
+
+p{ margin: 0;padding: 0;}
+
+.fontXL{font-size: 32px;}
+.FontMD{font-size: 24px;}
+.FontSM{font-size: 14px;}
+
+table {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+table td {
+    border: solid 1px #000000;
+    padding: 3px 5px;
+    vertical-align: top;
+}
+
+#IdpFrontCover table tr td:first-child,
+#IdpFrontCover table tr td:last-child{width: 5%;border: none;}
+
+.bold{ font-weight: bold;}
+
+/* COVER PAGE */
+
+table#IdpCoverBody tr:first-child td:first-child{ border-right: solid 1px #000000;}
+table#IdpCoverBody tr:first-child td:last-child{ border-left: solid 1px #000000;}
+table#IdpCoverBody tr:first-child td{ border-top: none;border-left: none;border-right: none;}
+table#IdpCoverBody tr:nth-child(4) td{ border-top: none;border-bottom: none;}
+table#IdpCoverBody tr:nth-child(5) td{ border-top: none;border-bottom: none;}
+table#IdpCoverBody tr:nth-child(6) td{ border-top: none;border-bottom: none;}
+table#IdpCoverBody tr:nth-child(7) td{ border-top: none;border-bottom: none;}
+
+table#IdpCoverFooter tr:first-child td:first-child{ border-right: solid 1px #000000;}
+table#IdpCoverFooter tr:first-child td:last-child{ border-left: solid 1px #000000;}
+table#IdpCoverFooter tr:first-child td{ border-top: none;border-left: none;border-right: none;}
+
+/* END  COVER PAGE */
+
+
+table#IdpPage2DescOfVehicle{border-top: none;border-left: none;border-bottom: none;}
+
+table#IdpPage2DescOfVehicle tr td:first-child{ width: 5%;border: none;}
+table#IdpPage2DescOfVehicle tr td{ border-bottom: none; border-top: none;}
+table#IdpPage2DescOfVehicle tr td:nth-child(2),
+table#IdpPage2DescOfVehicle tr td:nth-child(3){ width: 47.5%;}
+
+/* PAGE 4 */
+
+table.DescriptionOfVehicleTable tr td{ border-top: none;border-bottom: none;}
+
+table#CounterfoilSouche{border-top: none;border-left: none;border-bottom: none;}
+
+table#CounterfoilSouche tr td:first-child{ width: 5%;border: none;}
+table#CounterfoilSouche tr td{ border-bottom: none; border-top: none;}
+table#CounterfoilSouche tr td:nth-child(2),
+table#CounterfoilSouche tr td:nth-child(3){ width: 47.5%;}
+
+table#IdpExportationVoucher{border-top: none;border-left: none;border-bottom: none;}
+
+table#IdpExportationVoucher tr td:first-child{ width: 5%;border: none;}
+table#IdpExportationVoucher tr td{ border-bottom: none; border-top: none;}
+table#IdpExportationVoucher tr td:nth-child(2),
+table#IdpExportationVoucher tr td:nth-child(3){ width: 47.5%;}
+
+table.NoBorders tr td{ border: none;}
+
+table#countries{ margin-top: 50px;}
+
+table#OtherCountries{ border: solid 1px #000000;}
+table#OtherCountries tr td{ border: none;}
+
+/* END PAGE 4 */
+
+@media print {
+
+    body {
+        padding: 0;
+        font-family: arial, helvetica, sans-serif;
+        font-size: 9px;
+        color: #000000;
+    }
+
+    p{ margin: 0;padding: 0;}
+
+    .fontXL{font-size: 26px;}
+    .FontMD{font-size: 18px;}
+    .FontSM{font-size: 12px;}
+    .FontNormal{font-size: 10px;}
+
+    .site-description {display:none;}
+    .site-title {display:none;}
+
+    table#IdpPage2DescOfVehicle tr td{ padding: 1px 5px;}
+
+
+}
+

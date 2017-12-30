@@ -1,0 +1,160 @@
+﻿/*
+***************************************
+
+Client:  FIA
+Company: Maxxor
+Author:  Brent Birch 
+
+***************************************
+*/
+
+
+/*
+***************************************
+
+TABLE OF CONTENTS
+--------------------------------------
+
+1. GLOBAL STYLING
+2. GENERAL LAYOUT AND PAGE STYLING
+3. COLOUR CODES
+4. FORMS AND FIELDS
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+
+***************************************
+*/
+
+/*
+***************************************
+1. GLOBAL STYLING
+***************************************
+*/
+
+.txt-wht{color:#ffffff;}
+
+
+
+
+
+/*
+***************************************
+2. GENERAL LAYOUT AND PAGE STYLING
+***************************************
+*/
+.styleguide-sections{margin-bottom:50px;}
+
+
+.colorSwatchBox{
+    width:120px;
+    height:auto;
+    float:left;
+    margin-right:20px;
+    
+}
+
+    .colorSwatchBox .holder{
+        width:120px;
+        height:66px;
+        border-radius:3px;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        overflow:hidden;
+    }
+
+    .colorSwatchBox span{
+        width:100%;
+        height:33px;
+        display:block;
+        text-align:center;
+        line-height:33px;
+    }
+
+
+/*
+***************************************
+3. COLOUR CODES
+***************************************
+*/
+
+/* BACKGROUNDS */
+
+.indigo-light{background:#1f3853;}
+.indigo-dark{background:#192c41;}
+
+.blue-light{background:#3498db;}
+.blue-dark{background:#2676aa;}
+
+.ocean-green-light{background:#1abc9c;}
+.ocean-green-dark{background:#14937b;}
+
+.orange-light{background:#fc8f19;}
+.orange-dark{background:#eb7b00;}
+
+.strawberry-light{background:#f35958;}
+.strawberry-dark{background:#af4140;}
+
+.dove-grey-light{background:#ecf0f1;}
+.dove-grey-dark{background:#aeb4b7;}
+
+/* TEXT COLOURS */
+
+.txt-indigo-light{color:#1f3853!important;}
+.txt-indigo-dark{color:#192c41!important;}
+
+.txt-blue-light{color:#3498db!important;}
+.txt-blue-dark{color:#2676aa!important;}
+
+.txt-ocean-green-light{color:#1abc9c!important;}
+.txt-ocean-green-dark{color:#14937b!important;}
+
+.txt-orange-light{color:#fc8f19!important;}
+.txt-orange-dark{color:#eb7b00!important;}
+
+.txt-strawberry-light{color:#f35958!important;}
+.txt-strawberry-dark{color:#af4140!important;}
+
+.txt-dove-grey-light{color:#ecf0f1!important;}
+.txt-dove-grey-dark{color:#aeb4b7!important;}
+
+.muted{color:#aeb4b7!important;}
+.text-info{color:#3498db!important;}
+.text-success{color:#1abc9c!important;}
+.text-warning{color:#fc8f19!important;}
+.text-error{color:#f35958!important;}
+.text-dark{color:#555555!important;}
+
+
+
+/*
+***************************************
+3. FORMS AND FIELDS
+***************************************
+*/
+
+.form-control[disabled], 
+.form-control[readonly], 
+fieldset[disabled] .form-control{
+    background:#ffffff!important;
+}
+
+.input-success{border-color:#3498db!important;}
+.input-error{border-color:#f35958!important;color:#f35958!important;}
+
+
+
+
+
+
+
+
+
+

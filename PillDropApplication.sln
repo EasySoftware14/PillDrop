@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDropApplication", "PillDropApplication\PillDropApplication.csproj", "{FF18BF74-57F5-433E-9128-FE1C8F4BCDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDropApplication.Tests", "PillDropApplication.Tests\PillDropApplication.Tests.csproj", "{462F8A5C-17DB-4B0C-85F8-738C7B669244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.API", "PillDrop.API\PillDrop.API.csproj", "{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.Domain", "PillDrop.Domain\PillDrop.Domain.csproj", "{E1D0BA52-BE4D-4DC3-922F-78117D043F54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.Resources", "PillDrop.Resources\PillDrop.Resources.csproj", "{30882289-BFDD-4D93-A391-44ACAE2C7BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.Implementation", "PillDrop.Implementation\PillDrop.Implementation.csproj", "{4B4F56DC-8645-4D62-814D-7838DF301AE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF18BF74-57F5-433E-9128-FE1C8F4BCDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF18BF74-57F5-433E-9128-FE1C8F4BCDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF18BF74-57F5-433E-9128-FE1C8F4BCDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF18BF74-57F5-433E-9128-FE1C8F4BCDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30882289-BFDD-4D93-A391-44ACAE2C7BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30882289-BFDD-4D93-A391-44ACAE2C7BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30882289-BFDD-4D93-A391-44ACAE2C7BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30882289-BFDD-4D93-A391-44ACAE2C7BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B4F56DC-8645-4D62-814D-7838DF301AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4F56DC-8645-4D62-814D-7838DF301AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4F56DC-8645-4D62-814D-7838DF301AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4F56DC-8645-4D62-814D-7838DF301AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D46CAFE4-31B5-4D20-824F-8A92FB9F0D7C}
+	EndGlobalSection
+EndGlobal

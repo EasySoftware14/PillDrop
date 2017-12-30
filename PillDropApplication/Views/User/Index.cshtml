@@ -1,0 +1,92 @@
+﻿@model PillDrop.Domain.Presentation.UserModel
+
+@{
+    ViewBag.Heading1 = "Manage Users";
+    ViewBag.Title = "Users";
+    Layout = "~/views/shared/_LayoutAdmin.cshtml";
+
+}
+<br />
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> User Data Table
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>LastName</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th > </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var emp in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => emp.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => emp.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => emp.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => emp.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => emp.Status)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="/User/Edit/@emp.Id"> Edit</a>
+                            <a class="btn btn-danger" href="/User/Delete/@emp.Id"> Remove</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    //function GetActions(status, id) {
+    //    var extraLink = {};
+
+    //    extraLink = { html: $("#editAction").tmpl({ Id: id }), key: "edit" };
+
+    //    return [{ html: $("#viewAction").tmpl({ Id: id }), key: "view" }, extraLink];
+    //}
+
+    //function RenderTable() {
+    //    var columnDefs = [
+    //        {
+    //            "bSortable": true,
+    //            "aTargets": [5],
+    //            "mRender": function (data, type, full) {
+    //                return GetActions(full[4], full[5]);
+
+    //            }
+    //        }
+    //    ];
+
+    //    return $("#users").dataTableWrapper({
+    //        aoColumnDefs: columnDefs,
+    //        sAjaxSource: "/user/listajaxhandler",
+    //        tableElement: $("#users"),
+    //        order: "desc"
+    //    }).columnFilter({});
+    //}
+    //$(document).ready(function () {
+    //    RenderTable();
+
+    //    $('#confirmModal').modal({ backdrop: "static", keyboard: false });
+    //})
+</script>
