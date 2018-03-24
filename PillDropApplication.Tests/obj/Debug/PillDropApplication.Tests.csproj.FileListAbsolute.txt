@@ -83,3 +83,5 @@ C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDropApplicatio
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDropApplication.Tests\obj\Debug\PillDropApplication.Tests.csproj.CoreCompileInputs.cache
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDropApplication.Tests\obj\Debug\PillDropApplication.Tests.dll
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDropApplication.Tests\obj\Debug\PillDropApplication.Tests.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\obj\Debug\PillDropApplication.Tests.csprojResolveAssemblyReference.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\obj\Debug\PillDropApplication.Tests.csproj.CoreCompileInputs.cache

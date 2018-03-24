@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
+using NHibernate.Linq;
 using PillDrop.Domain.Contracts;
 using PillDrop.Domain.Contracts.Repositories;
 

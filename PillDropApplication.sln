@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDropApplication", "Pill
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDropApplication.Tests", "PillDropApplication.Tests\PillDropApplication.Tests.csproj", "{462F8A5C-17DB-4B0C-85F8-738C7B669244}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.API", "PillDrop.API\PillDrop.API.csproj", "{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.Domain", "PillDrop.Domain\PillDrop.Domain.csproj", "{E1D0BA52-BE4D-4DC3-922F-78117D043F54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillDrop.Resources", "PillDrop.Resources\PillDrop.Resources.csproj", "{30882289-BFDD-4D93-A391-44ACAE2C7BA1}"
@@ -29,10 +27,6 @@ Global
 		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{462F8A5C-17DB-4B0C-85F8-738C7B669244}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DDA6E4A-15FF-44B0-9926-ACDD97013D24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1D0BA52-BE4D-4DC3-922F-78117D043F54}.Release|Any CPU.ActiveCfg = Release|Any CPU

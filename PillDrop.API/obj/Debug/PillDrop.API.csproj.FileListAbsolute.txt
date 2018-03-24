@@ -46,3 +46,5 @@ C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.API\obj\D
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.API\obj\Debug\PillDrop.API.csproj.CoreCompileInputs.cache
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.API\obj\Debug\PillDrop.API.dll
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.API\obj\Debug\PillDrop.API.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.API\obj\Debug\PillDrop.API.csprojResolveAssemblyReference.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.API\obj\Debug\PillDrop.API.csproj.CoreCompileInputs.cache
