@@ -19,16 +19,21 @@ namespace PillDrop.Implementation.Implementation.Services
             _emailArchiveService = emailArchiveService;
         }
         
-        public long Save(Demography user)
+        public long Save(Demography demography)
         {
             using (var trans = _demographicsRepository.Session.BeginTransaction())
             {
-                var id = _demographicsRepository.Save(user);
+                var id = _demographicsRepository.Save(demography);
                 trans.Commit();
                 return id;
             }
         }
-       
+
+        public Demography GetById(long id)
+        {
+            return _demographicsRepository.Get(id);
+        }
+
         public void SaveOrUpdate(Demography demography)
         {
             using (var trans = _demographicsRepository.Session.BeginTransaction())

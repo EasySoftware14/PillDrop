@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using PillDrop.Domain.Contracts.Models;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 
 namespace PillDrop.Domain.Presentation
 {
@@ -20,17 +22,26 @@ namespace PillDrop.Domain.Presentation
         public string CountryCode { get; set; }
         public string Designation { get; set; }
         public string Email { get; set; }
-        public string Gender { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Select a gender")]
+        public Gender Gender { get; set; }
         public string Age { get; set; }
         public Patient Patient { get; set; }
-        public PillDropper PillDropper { get; set; }    
+        public Address Address { get; set; }    
+        public PillDropper PillDropper { get; set; }
         public EntityStatus Status { get; set; }
+        public RoleType RoleType { get; set; }
+        public IList<SelectListItem> NetworkCodes { get; set; }
         public string Number { get; set; }
+        public string CellCode { get; set; }
+        public string CellNumber { get; set; }
+        public string NationalCode { get; set; }
         public bool IsSecondaryAdmin { get; set; }
         public bool UseTemporary { get; set; }
         public IList<SelectListItem> RoleList { get; set; }
         public IList<User> Users { get; set; }
-        public List<SelectListItem> OrganizationList { get; set; }
+        public IList<PatientDataModel> Patients { get; set; }
+        public IList<PillDropperDataModel> PillDroppers { get; set; }
+        public IList<SelectListItem> OrganizationList { get; set; }
         public DateTime? TemporaryPasswordCreatedDate { get; set; }
         public string ExceptionMessage { get; set; }
         public RecoveryQuestion RecoveryQuestion { get; set; }
@@ -46,12 +57,11 @@ namespace PillDrop.Domain.Presentation
         {
             Id = user.Id;
 
-            //if (user.Organization != null)
-            //{
-            //    OrganizationId = user.GetOrganizationId();
-            //    CountryName = user.GetOrganizationCountryName();
-            //    OrganizationName = user.GetOrganizationName();
-            //}
+            if (user.Organization != null) 
+            {
+                OrganizationId = user.GetOrganizationId();
+                OrganizationName = user.Name;
+            }
 
             var role = user.UserRoles.Select(x => x.Role).FirstOrDefault();
 
@@ -68,6 +78,12 @@ namespace PillDrop.Domain.Presentation
             Status = user.Status;
             RecoveryQuestion = user.RecoveryQuestion;
             RecoveryQuestionAnswer = user.RecoveryQuestionAnswer;
+            RoleType = user.RoleType;
+            Address = user.Address;
+            PillDropper = user.PillDropper ?? new PillDropper();
+            Patient = user.Patient ?? new Patient();
+            Gender = user.Gender;
         }
+
     }
 }

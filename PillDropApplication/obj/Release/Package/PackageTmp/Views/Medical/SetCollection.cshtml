@@ -1,0 +1,70 @@
+﻿@model PillDropApplication.Models.UserPrescriptionModel
+
+@{
+    ViewBag.Heading1 = "Manage Medical";
+    ViewBag.Title = "Set Collection";
+    Layout = "~/views/shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("setcollection", "Medical", null, FormMethod.Post, new {@id = "medical-assign-form", @class = "form", @Required = "required"}))
+{
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            @Html.HiddenFor(m => m.Id)
+            <label class="form-label"><i class="fa fa-user"></i> Patient </label>
+            <div class="input-with-icon">
+                @Html.TextBoxFor(m => m.FullName, new {@id = "username", @name = "UserListId", @readonly = "readonly", @class = "select2 form-control", @required = "required"})
+            </div>
+            <br/>
+            <label class="form-label"><i class="fa fa-medkit"></i> Medicine</label>
+            <div class="input-with-icon">
+                <select class="prescription-multiple" id="prescriptionDropdown" required="required" multiple="multiple">
+                    @foreach (var selected in Model.SelectedPrescriptions)
+                    {
+                        <option value="@selected.Id" selected="selected">@selected.Name</option>
+                    }
+
+                    @foreach (var prescription in Model.Prescriptions)
+                    {
+
+                        <option value="@prescription.Id">@prescription.Name</option>
+
+                    }
+                </select>
+
+            </div>
+
+            <div class="input-with-icon col-md-10 col-lg-10 no-padding pull-left">
+                @Html.HiddenFor(m => m.Prescription, new {@id = "medicines", @class = "select2 form-control", @required = "required", @readonly = "readonly"})
+            </div>
+            <br/>
+            <div class="input-with-icon">
+                <label class="form-label"><i class="fa fa-calendar"></i> Collection Date</label>
+                <div class="input-with-icon" id="collectDate">
+                    @Html.TextBoxFor(m => m.DateOfCollection, new {@class = "form-control datepicker", @required = "required", @id = "date"})
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <button type="submit" id="btnSubmit" class="btn btn-success"> Add Collection Date</button>
+            </div>
+
+
+        </div>
+
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.prescription-multiple').select2({
+            placeholder: "Select a medicine",
+            selectOnClose: true
+        });
+
+        $("#date").datepicker();
+        $("#date").val('Select date...');
+    });
+</script>

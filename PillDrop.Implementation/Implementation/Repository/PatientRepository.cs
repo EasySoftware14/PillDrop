@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NHibernate;
 using PillDrop.Domain.Contracts.Repositories;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 using PillDrop.Implementation.Implementation.Criteria;
 
 namespace PillDrop.Implementation.Implementation.Repository
@@ -18,6 +19,22 @@ namespace PillDrop.Implementation.Implementation.Repository
         {
             _session = session;
         }
-       
+
+        public Patient GetPatientById(long userId)
+        {
+            return FindBySpecification(new PatientByIdCriteria(userId)).Single();
+        }
+
+        public IList<PatientDataModel> GetAllPatients()
+        {
+            var sql = "exec [dbo].[get_all_patients]";
+
+            var query = Session
+                .CreateSQLQuery(sql)
+                .AddEntity(typeof(PatientDataModel))
+                .List<PatientDataModel>();
+
+            return query.ToList();
+        }
     }
 }

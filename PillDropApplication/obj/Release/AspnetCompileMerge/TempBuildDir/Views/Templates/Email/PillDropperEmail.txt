@@ -1,0 +1,44 @@
+﻿ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title> Pilldropper Setup Confirmation</title>
+</head>
+
+<body style="margin:0px;padding:0px;">
+<style type="text/css">.ExternalClass {width: 100%;}</style>
+<div class="ExternalClass" style="width:100%;height:100%;background:#fff;">
+	<p>
+		Dear %USER%
+	</p>
+	<p>
+		Please be advised that you have been added as an applicant to serve as a PillDropper, please submit the following certified copies if have not done so:		
+	</p>	
+	<p>
+		1. Driver Licence<br/>
+		2. Proof of Residence<br/>
+		3. FICA Document<br/>
+			&nbsp;&nbsp;a. ID<br/>
+			&nbsp;&nbsp;b. Contact Details<br/>
+			&nbsp;&nbsp;c. Bank Details<br/>
+	</p>
+	<p>
+		Please click on this %LINK% to setup a personal password. 
+		This is necessary in order to ensure integrity and security of the system. 
+		Failure to complete this step will mean that you will not have access to the Pilldrop Management System.
+	</p>
+	<p>
+		If you have any queries, please email the Pilldrop Support Team at pilldropsupport@pilldropdev.co.za
+	</p>
+		Regards
+	<br/>
+	<br/>
+		PillDrop Chief Executive Officer
+	<br/>
+	<br/>
+		<img src='%FOOTERIMAGE%'/>
+	<br/>
+	
+</div>
+</body>
+</html>

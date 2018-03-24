@@ -30,35 +30,68 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr3.Runtime.3.5.2-beta1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="FluentNHibernate">
-      <HintPath>..\..\IDPNew\src\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
+      <HintPath>..\..\..\..\..\Workspace\IDP\src\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Iesi.Collections.4.0.3\lib\net461\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\Iesi.Collections.4.0.2\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\IDPNew\src\packages\Microsoft.Owin.2.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\..\IDPNew\src\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\..\..\Workspace\IDP\src\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Burrow">
-      <HintPath>..\..\IDPNew\lib\NHibernate.Burrow.dll</HintPath>
+    <Reference Include="NHibernate.Burrow, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NHibernate.Burrow.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow.AppBlock">
+      <HintPath>..\..\IDPNew\lib\NHibernate.Burrow.AppBlock.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2">
+      <HintPath>..\..\IDPNew\src\packages\NHibernate.Caches.SysCache2.4.0.0.4000\lib\net40\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.LambdaExtensions">
+      <HintPath>..\..\IDPNew\lib\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>bin\Debug\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Core">
+      <HintPath>..\..\IDPNew\src\IDP.Infrastructure\bin\Debug\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.ObjectBuilder.StructureMap">
+      <HintPath>bin\Debug\NServiceBus.ObjectBuilder.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.ObjectBuilder.StructureMap262">
+      <HintPath>bin\Debug\NServiceBus.ObjectBuilder.StructureMap262.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\..\IDPNew\src\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Remotion.Linq.2.2.0-alpha-004\lib\net45\Remotion.Linq.dll</HintPath>
+    <Reference Include="SendGrid.SmtpApi, Version=1.1.3.0, Culture=neutral, PublicKeyToken=55aa52d3c3c0d2b2, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.1.3\lib\net40\SendGrid.SmtpApi.dll</HintPath>
     </Reference>
-    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0-alpha-001\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    <Reference Include="SendGridMail, Version=3.0.3.0, Culture=neutral, PublicKeyToken=2361874b6a2fe056, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGridMail.net40.3.0.3.0\lib\net40\SendGridMail.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>bin\Debug\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,8 +101,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Container\NhibernateRegistry.cs" />
     <Compile Include="Implementation\Criteria\EmailsToBeProcessedCriteria.cs" />
+    <Compile Include="Implementation\Criteria\GetAllPillDroppers.cs" />
+    <Compile Include="Implementation\Criteria\GetAllPatients.cs" />
     <Compile Include="Implementation\Criteria\GetAllUsersCriteria.cs" />
+    <Compile Include="Implementation\Criteria\AddressByUserIdCriteria.cs" />
+    <Compile Include="Implementation\Criteria\GetAllUsersPrescriptionsByCriteria.cs" />
+    <Compile Include="Implementation\Criteria\GetAllUsersPrescriptions.cs" />
+    <Compile Include="Implementation\Criteria\GetOrganizations.cs" />
+    <Compile Include="Implementation\Criteria\GetPrescriptionListCriteria.cs" />
+    <Compile Include="Implementation\Criteria\GetUsersByRoleTypeCriteria.cs" />
+    <Compile Include="Implementation\Criteria\PilldropperByUserId.cs" />
+    <Compile Include="Implementation\Criteria\PatientByIdCriteria.cs" />
+    <Compile Include="Implementation\Criteria\OrganizationByIdCriteria.cs" />
+    <Compile Include="Implementation\Criteria\PrescriptionByIdCriteria.cs" />
     <Compile Include="Implementation\Criteria\RecoveryQuestionByIdCriteria.cs" />
     <Compile Include="Implementation\Criteria\RecoveryQuestionsByCriteria.cs" />
     <Compile Include="Implementation\Criteria\UserByEmailCriteria.cs" />
@@ -78,28 +124,49 @@
     <Compile Include="Implementation\Extensions\StringExtensions.cs" />
     <Compile Include="Implementation\Helpers\ApplicationConfiguration.cs" />
     <Compile Include="Implementation\Helpers\AuditTrailListener.cs" />
+    <Compile Include="Implementation\Helpers\EmailMessage.cs" />
+    <Compile Include="Implementation\Helpers\ETokenNotFound.cs" />
     <Compile Include="Implementation\Helpers\NHibernateHelper.cs" />
     <Compile Include="Implementation\Helpers\NHibernateMapping.cs" />
+    <Compile Include="Implementation\Helpers\TokenTemplate.cs" />
     <Compile Include="Implementation\MD5Hasher.cs" />
     <Compile Include="Implementation\Repository\EmailArchiveRepository.cs" />
     <Compile Include="Implementation\Repository\DemographicsRepository.cs" />
+    <Compile Include="Implementation\Repository\AddressRepository.cs" />
+    <Compile Include="Implementation\Repository\MedicalRepository.cs" />
+    <Compile Include="Implementation\Repository\OrganizatioRepository.cs" />
     <Compile Include="Implementation\Repository\PillDropperRepository.cs" />
+    <Compile Include="Implementation\Repository\PrescriptionRepository.cs" />
     <Compile Include="Implementation\Repository\RecoveryQuestionRepository.cs" />
     <Compile Include="Implementation\Repository\PatientRepository.cs" />
+    <Compile Include="Implementation\Repository\UserPrescriptionRepository.cs" />
     <Compile Include="Implementation\Services\EmailArchiveService.cs" />
     <Compile Include="Implementation\Services\DemographicsService.cs" />
+    <Compile Include="Implementation\Services\AddressService.cs" />
+    <Compile Include="Implementation\Services\EmailNotificationService.cs" />
+    <Compile Include="Implementation\Services\MedicalService.cs" />
+    <Compile Include="Implementation\Services\OrganizationService.cs" />
+    <Compile Include="Implementation\Services\PrescriptionService.cs" />
     <Compile Include="Implementation\Services\RecoveryQuestionService.cs" />
     <Compile Include="Implementation\Repository\Repository.cs" />
     <Compile Include="Implementation\Repository\UserRepository.cs" />
     <Compile Include="Implementation\Services\AuthenticationService.cs" />
     <Compile Include="Implementation\Services\PillDropperService.cs" />
     <Compile Include="Implementation\Services\PatientService.cs" />
+    <Compile Include="Implementation\Services\UserPrescriptionService.cs" />
     <Compile Include="Implementation\Services\UserService.cs" />
     <Compile Include="Persistence\DemographicsMap.cs" />
+    <Compile Include="Persistence\AddressMap.cs" />
+    <Compile Include="Persistence\EmailArchiveMap.cs" />
+    <Compile Include="Persistence\OrganizationMap.cs" />
+    <Compile Include="Persistence\PatientDataMap.cs" />
+    <Compile Include="Persistence\PillDropperDataMap.cs" />
+    <Compile Include="Persistence\PrescriptionMap.cs" />
     <Compile Include="Persistence\RecoveryQuestionMap.cs" />
     <Compile Include="Persistence\PatientMap.cs" />
     <Compile Include="Persistence\PillDropperMap.cs" />
     <Compile Include="Persistence\UserMap.cs" />
+    <Compile Include="Persistence\UserPrescriptionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -111,7 +178,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

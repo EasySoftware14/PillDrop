@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Newtonsoft.Json;
 using PillDrop.Domain.Contracts;
 using PillDrop.Domain.Contracts.Services;
+using PillDrop.Domain.Entities;
 using PillDrop.Implementation.Implementation;
 using PillDropApplication.Models;
 
@@ -56,59 +59,97 @@ namespace PillDropApplication.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        var user = _authenticationService.Validate(loginModel.UserName, loginModel.Password);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = _authenticationService.Validate(loginModel.UserName, loginModel.Password);
+                    Session["User"] = user;
+                    if (!string.IsNullOrEmpty(user.TemporaryPassword))
+                    {
+                        var partialviewstring = user.RecoveryQuestion != null ? "Partial/_ResetPassword" : "Partial/_ResetPasswordFirstTime";
+                        user.TemporaryPassword = null;
+                        loginModel.RecoveryQuestion = user.RecoveryQuestion;
+                        loginModel.RecoveryQuestionAnswer = user.RecoveryQuestionAnswer;
+                        var recoveryQuestions = _recoveryQuestionService.GetQuestions();
+                        loginModel.RecoveryQuestions = recoveryQuestions;
+                        UserService.SaveOrUpdate(user);
+                        TempData["Success"] = true;
 
-            //        if (!string.IsNullOrEmpty(user.TemporaryPassword))
-            //        {
-            //            var partialviewstring = user.RecoveryQuestion != null ? "Partial/_ResetPassword" : "Partial/_ResetPasswordFirstTime";
-            //            user.TemporaryPassword = null;
-            //            loginModel.RecoveryQuestion = user.RecoveryQuestion;
-            //            loginModel.RecoveryQuestionAnswer = user.RecoveryQuestionAnswer;
-            //            var recoveryQuestions = _recoveryQuestionService.GetQuestions();
-            //            loginModel.RecoveryQuestions = recoveryQuestions;
-            //            UserService.SaveOrUpdate(user);
-            //            TempData["Success"] = true;
+                        return View(partialviewstring, loginModel);
+                    }
 
-            //            return View(partialviewstring, loginModel);
-            //        }
+                    var cookie = Request.Cookies["_culture"];
 
-            //        var cookie = Request.Cookies["_culture"];
+                    if (loginModel.PersistCulture)
+                    {
+                        if (cookie == null)
+                            return RedirectToAction("login");
 
-            //        if (loginModel.PersistCulture)
-            //        {
-            //            if (cookie == null)
-            //                return RedirectToAction("login");
+                        cookie.Values.Set("persisted", "1");
+                        Response.AppendCookie(cookie);
+                    }
+                    //else
+                    //{
+                    //    SetCookieValue(cookie, "persisted", "0");
+                    //}
 
-            //            cookie.Values.Set("persisted", "1");
-            //            Response.AppendCookie(cookie);
-            //        }
-            //        //else
-            //        //{
-            //        //    SetCookieValue(cookie, "persisted", "0");
-            //        //}
+                    var httpCookie = GenerateIdentityCookie(loginModel, user);
+                    Response.Cookies.Add(httpCookie);
 
-            //        //var httpCookie = GenerateIdentityCookie(loginModel, user);
-            //        //Response.Cookies.Add(httpCookie);
+                    return !string.IsNullOrEmpty(loginModel.ReturnUrl)
+                        ? Redirect(loginModel.ReturnUrl)
+                        : (ActionResult)RedirectToAction("index", "home");
+                }
+                catch (Exception e)
+                {
+                    loginModel.ExceptionMessage = e.Message;
 
-            //        return !string.IsNullOrEmpty(loginModel.ReturnUrl)
-            //            ? Redirect(loginModel.ReturnUrl)
-            //            : (ActionResult)RedirectToAction("index", "home");
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        loginModel.ExceptionMessage = e.Message;
-
-            //        return View(loginModel);
-            //    }
-            //}
+                    return View(loginModel);
+                }
+            }
 
             return RedirectToAction("index","Home");
         }
+        public HttpCookie GenerateIdentityCookie(LoginModel loginModel, User user)
+        {
+            var cookie = new PillDropCookie
+            {
+                Id = user.Id,
+                Name = user.Id.ToString(),
+                FullUserName = user.Name + user.Surname,
+                HubName = user.RoleType.ToString(),
+                UserName = user.Email,
+                RememberMe = loginModel.PersistAuthentication,
+                
+            };
 
+            DateTime timeout;
+
+            if (!loginModel.PersistAuthentication)
+            {
+                timeout = DateTime.Now.Add(FormsAuthentication.Timeout);
+            }
+            else
+            {
+                var persistTimeoutMinutes =
+                    Convert.ToInt32(_applicationConfiguration.GetSetting("cookie_persistence_timeout"));
+                timeout = DateTime.Now.Add(new TimeSpan(0, 0, persistTimeoutMinutes, 0));
+            }
+
+            var userData = JsonConvert.SerializeObject(cookie);
+            var authTicket = new FormsAuthenticationTicket(1, cookie.Name, DateTime.Now, timeout,
+                loginModel.PersistAuthentication, userData);
+            var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+            var httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            {
+                HttpOnly = true,
+                Expires = authTicket.Expiration
+            };
+
+            return httpCookie;
+        }
         [HttpPost]
         public ActionResult ForgotPassword(string email)
         {
@@ -230,6 +271,13 @@ namespace PillDropApplication.Controllers
             TempData["Success"] = status;
 
             return RedirectToAction("login");
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            ClearSessionVariables();
+
+            return RedirectToAction("Login");
         }
     }
 }

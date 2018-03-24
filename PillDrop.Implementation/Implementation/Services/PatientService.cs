@@ -1,10 +1,12 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
 using PillDrop.Domain.Contracts.Repositories;
 using PillDrop.Domain.Contracts.Services;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 
 namespace PillDrop.Implementation.Implementation.Services
 {
@@ -28,7 +30,17 @@ namespace PillDrop.Implementation.Implementation.Services
                 return id;
             }
         }
-       
+
+        public Patient GetPatientById(long userId)
+        {
+            return _patientRepository.Get(userId);
+        }
+
+        public IList<PatientDataModel> GetAllPatients()
+        {
+            return _patientRepository.GetAllPatients();
+        }
+
         public void SaveOrUpdate(Patient user)
         {
             using (var trans = _patientRepository.Session.BeginTransaction())

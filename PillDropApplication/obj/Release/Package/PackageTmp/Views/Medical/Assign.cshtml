@@ -1,0 +1,120 @@
+﻿@using System.Web.UI.WebControls
+@model PillDropApplication.Models.MedicalModel
+
+@{
+    ViewBag.Heading1 = "Assign Medication";
+    ViewBag.Title = "Assign";
+    Layout = "~/views/shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Assign", "Medical", null, FormMethod.Post, new { @id = "medical-assign-form", @class = "form", @Required = "required" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <label class="form-label"><i class="fa fa-user"></i> Patient</label> 
+            <div class="input-with-icon">
+                @Html.DropDownListFor(m => m.UserId, new SelectList(Model.Users, "Value", "Text"), "Select...", new { @id = "userlist", @name = "UserListId", @class = "select2 form-control", @required = "required" })
+            </div>
+            <br />
+            <label class="form-label"><i class="fa fa-medkit"></i> Medicine</label> 
+            <div class="input-with-icon">
+                <select class="prescription-multiple" id="prescriptionDropdown" required="required" multiple="multiple">
+
+
+                    @foreach (var prescription in Model.Prescriptions)
+                    {
+
+                        <option value="@prescription.Id">@prescription.Name</option>
+
+                    }
+                </select>
+
+            </div>
+
+            <div class="input-with-icon col-md-10 col-lg-10 no-padding pull-left">
+                @Html.HiddenFor(m => m.MedicineIds, new { @id = "medicines", @class = "select2 form-control", @required = "required", @readonly = "readonly" })
+            </div>
+            <br />
+            <div class="input-with-icon">
+                <label class="form-label"><i class="fa fa-calendar"></i> Collection Date</label>
+                <div class="input-with-icon" id="collectDate">
+                    @Html.TextBoxFor(m => m.DateCollected, new {@class = "form-control datepicker", @required = "required", @id = "dateCollected"})
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="button" id="btnSubmit" class="btn btn-success"> Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.prescription-multiple').select2({
+                placeholder: "Select a medicine",
+                selectOnClose: true
+            });
+
+            $("#dateCollected").datepicker({
+                dateFormat:'dd-mm-yy'
+            });
+            $("#dateCollected").val('Select date...');
+            
+            var medicine = [];
+
+            function saveMedicines() {
+                $('#prescriptionDropdown  option:selected').each(function () {
+                    var medId = $(this).val();
+
+                    if (medId === "") {
+                        return false;
+                    } else {
+                        medicine.push(medId);
+                    }
+                });
+
+                $('#medicines').val(medicine.join(", "));
+            }
+
+            function convertFormToJSON(form) {
+                var array = jQuery(form).serializeArray();
+                var json = {};
+
+                jQuery.each(array, function () {
+                    json[this.name] = this.value || '';
+                });
+
+                return json;
+            }
+
+            $("#btnSubmit").click(function () {
+                saveMedicines();
+                var date = $('#dateCollected').val();
+                //$('#dateCollected').val(date);
+                console.log(date);
+                var data = convertFormToJSON($('#medical-assign-form'));
+
+                $.ajax({
+                    type: "POST",
+                    url: "/medical/assign",
+                    data: JSON.stringify(data),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (result) {
+                        if (result) {
+                            window.location.href = "/medical";
+                        }
+                    }
+                });
+
+                console.log(data);
+               // $.post('/medical/assign', { model: data });
+
+            });
+
+        });
+
+    </script>
+}

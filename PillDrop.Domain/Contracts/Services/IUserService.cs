@@ -7,11 +7,12 @@ namespace PillDrop.Domain.Contracts.Services
     {
         User GetByEmail(string email);
         User GetById(long id);
+        IList<User> GetUsersByRoleType(RoleType type);
         IList<User> GetAllUsers();
         void SaveOrUpdate(User user);
         User GetUserForPasswordSetup(string email);
         long Save(User user);
-        void SetupEmail(User user);
+        void SetupEmail(User user, string  path);
 
     }
 }

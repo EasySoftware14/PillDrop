@@ -1,8 +1,15 @@
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\bin\Debug\PillDrop.Resources.dll
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\bin\Debug\PillDrop.Resources.pdb
-C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.csprojResolveAssemblyReference.cache
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.Resources.resources
-C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.GenerateResource.Cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.GenerateResource.cache
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.CoreCompileInputs.cache
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.dll
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Debug\PillDrop.Resources.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\bin\Debug\PillDrop.Resources.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\bin\Debug\PillDrop.Resources.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.csprojResolveAssemblyReference.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.Resources.resources
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.GenerateResource.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.CoreCompileInputs.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDrop.Resources\obj\Debug\PillDrop.Resources.pdb

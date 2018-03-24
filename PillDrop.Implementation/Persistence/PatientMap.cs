@@ -13,12 +13,13 @@ namespace PillDrop.Implementation.Persistence
             References(x => x.User).Column("user_id");
             References(x => x.Demography).Column("demographics_id");
             Map(x => x.Age).Column("age");
-            Map(x => x.Gender).Column("gender");
+            Map(x => x.Gender).Column("gender").CustomType<Gender>();
             Map(x => x.ICD).Column("icd");
             Map(x => x.IsMedicalAid).Column("has_medical_aid");
             
             Map(x => x.CreatedAt).Column("created_at");
             Map(x => x.ModifiedAt).Column("modified_at");
+           
         }
 
     }

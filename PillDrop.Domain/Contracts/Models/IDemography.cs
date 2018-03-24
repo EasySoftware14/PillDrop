@@ -6,5 +6,7 @@
         string Location { get; set; }
         string Code { get; set; }
         string Gps { get; set; }
+        string Latitude { get; set; }
+        string Longitude { get; set; }
     }
 }

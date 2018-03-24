@@ -1,0 +1,188 @@
+﻿
+.prin_btn {
+    background-color: #0090d9;
+    color: #ffffff; 
+    padding: 10px 20px;
+    -webkit-border-radius: 3px;
+    font: 14px/20px"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.prin_btn:hover {
+    background-color: #0080c8;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #0090d9;
+}
+
+
+@page {
+    size: A4 portrait;
+}
+
+body {
+    background-color: #fff !important;
+    margin: 0;
+    padding: 0;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+div#idp {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+    div#idp > img#blankIDP {
+        width: 1240px;
+        height: auto;
+    }
+
+    div#idp > div {
+        position: absolute;
+        height: auto;
+        text-align: left;
+    }
+
+div#countryIssued {
+    top: 350px;
+    left: 439px;
+    width: 345px;
+    text-align: center !important;
+}
+
+div#dateIssued {
+    top: 395px;
+    left: 439px;
+    width: 345px;
+    text-align: center !important;
+}
+
+div#surname {
+    top: 681px;
+    left: 300px;
+    width: 215px;
+}
+
+div#name {
+    top: 731px;
+    left: 300px;
+    width: 215px;
+}
+
+div#placeofbirth {
+    top: 762px;
+    left: 300px;
+    width: 215px;
+}
+
+div#dateofbirth {
+    top: 813px;
+    left: 300px;
+    width: 215px;
+}
+
+div#placeofresidence {
+    top: 855px;
+    left: 300px;
+    width: 215px;
+}
+
+div#gender {
+    top: 904px;
+    left: 300px;
+    width: 70px;
+}
+
+div#nationality {
+    top: 904px;
+    left: 389px;
+    width: 141px;
+}
+
+div#idpno {
+    top: 946px;
+    left: 300px;
+    width: 215px;
+}
+
+div#licensenumber {
+    top: 1002px;
+    left: 300px;
+    width: 215px;
+}
+
+div#machinecode {
+    top: 1043px;
+    left: 275px;
+    width: 680px;
+    height: 80px !important;
+}
+
+    div#machinecode > p {
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+div#stampcode_A {
+    top: 685px;
+    left: 850px;
+}
+
+div#stampcode_B {
+    top: 722px;
+    left: 850px;
+}
+
+div#stampcode_C {
+    top: 758px;
+    left: 850px;
+}
+
+div#stampcode_D {
+    top: 794px;
+    left: 850px;
+}
+
+div#stampcode_E {
+    top: 830px;
+    left: 850px;
+}
+
+div#idphoto {
+    top: 774px;
+    left: 538px;
+    width: 171px;
+    height: 230px !important;
+}
+
+    div#idphoto > img {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        margin: auto 0;
+        width: 100%;
+    }
+
+.positionAbsolute {
+    z-index: 1000;
+    position: fixed !important;
+    left: 15px;
+    top: 15px;
+}

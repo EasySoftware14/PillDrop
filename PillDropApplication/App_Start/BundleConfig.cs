@@ -10,8 +10,7 @@ namespace PillDropApplication
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.signalR-{version}.js"));
+                        "~/Scripts/jquery-1.11.1.js"));
 
             var bundle = new ScriptBundle("~/bundles/pilldrop").Include(
                 "~/Scripts/jquery.unobtrusive-ajax.js",
@@ -23,6 +22,7 @@ namespace PillDropApplication
                 "~/Scripts/messenger/messenger.min.js",
                 "~/Scripts/messenger/messenger-theme-future.js",
                 "~/Scripts/underscore.js",
+                "~/Scripts/popper.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/jquery.bootstrap.wizard.js",
                 "~/Scripts/respond.js",
@@ -46,24 +46,24 @@ namespace PillDropApplication
                 "~/Scripts/bootstrap-datepicker.js",
                 "~/Scripts/jquery.inputmask.min.js",
                 "~/Scripts/autoNumeric.js",
-                "~/Scripts/wysihtml5-0.3.0.js",
                 "~/Scripts/bootstrap-wysihtml5.js",
                 "~/Scripts/bootstrap-tagsinput.js",
                 "~/Scripts/bootstrap-timepicker.js",
                 "~/Scripts/dropzone.js",
                 "~/Scripts/jquery.multiple.select.js",
                 "~/Scripts/namespace.js",
-                "~/Scripts/craftmap.min.js",
                 "~/Scripts/general.js",
+                "~/Scripts/modal.js",
+               
                 "~/Scripts/additional-methods.js",
                 "~/Scripts/jQuery.FileUpload/jquery.fileupload.js",
                 "~/Scripts/models.js",
-                "~/Scripts/jquery.filedrop.js",
                 "~/Scripts/jQuery.print.js",
                 "~/Scripts/jquery.alphanum.js",
                 "~/Scripts/wizard.js",
-                "~/Scripts/ajaxhandler.js",
-                "~/Scripts/jquery.Jcrop.js");
+                "~/Scripts/ajaxhandler.js"
+                );
+            
             bundle.Orderer = new BundleOrderer();
             bundles.Add(bundle);
 

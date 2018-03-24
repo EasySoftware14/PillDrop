@@ -1,0 +1,72 @@
+﻿body {
+    margin: 0;
+    padding: 50px 50px;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
+}
+
+p{ margin: 0;padding: 0;}
+h1{color: #000000;}
+.fontXL{font-size: 32px;}
+.FontMD{font-size: 24px;}
+.FontSM{font-size: 14px;}
+
+table {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    align-self: center;
+}
+/*#infoDiv{ float: left;
+    width: 30%;
+    text-align: left;
+}
+#carDiv {
+    float: left;
+    width: 20%;
+}
+#photoDiv {
+    float: left;
+    width: 22%;
+}*/
+table td {
+    border: solid 1px #000000;
+    padding: 0px 100px 75px 100px;
+    vertical-align: top;
+
+}
+/*table#infoDiv td{ padding: 0;
+    text-align: left;
+    vertical-align: top;
+}*/
+#IdpFrontCover table tr td:first-child,
+#IdpFrontCover table tr td:last-child{width: 5%;border: none;}
+table#IdpCoverHeader2 td{ width: 100%;}
+.bold{ font-weight: bold;}
+
+
+
+@media print {
+
+    body {
+        padding: 0;
+        font-family: arial, helvetica, sans-serif;
+        font-size: 9px;
+        color: #000000;
+    }
+
+    p{ margin: 0;padding: 0;}
+
+    .fontXL{font-size: 26px;}
+    .FontMD{font-size: 18px;}
+    .FontSM{font-size: 12px;}
+    .FontNormal{font-size: 10px;}
+
+    .site-description {display:none;}
+    .site-title {display:none;}
+
+}
+

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NHibernate;
 using PillDrop.Domain.Contracts.Repositories;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 using PillDrop.Implementation.Implementation.Criteria;
 
 namespace PillDrop.Implementation.Implementation.Repository
@@ -18,6 +16,23 @@ namespace PillDrop.Implementation.Implementation.Repository
         {
             _session = session;
         }
-       
+
+        public PillDropper GetPillDropperByUserId(long userId)
+        {
+            return FindBySpecification(new PilldropperByUserId(userId)).Single();
+        }
+
+        public IList<PillDropperDataModel> GetAllPillDroppers()
+        {
+            var sql = "exec [dbo].[get_pilldropper]";
+
+            var query = Session
+                .CreateSQLQuery(sql)
+                .AddEntity(typeof(PillDropperDataModel))
+                .List<PillDropperDataModel>();
+
+            return query.ToList();
+            //return FindBySpecification(new GetAllPillDroppers()).ToList();
+        }
     }
 }

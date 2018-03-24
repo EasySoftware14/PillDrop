@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Configuration;
+using System.Linq;
 using System.Web.Mvc;
 using NHibernate.Linq;
 using PillDrop.Domain;
 using PillDrop.Domain.Contracts.Services;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Extensions;
 using PillDrop.Domain.Presentation;
 using PillDrop.Implementation.Implementation;
 using PillDropApplication.Models;
@@ -17,16 +20,21 @@ namespace PillDropApplication.Controllers
         private readonly IRecoveryQuestionService _recoveryQuestionService;
         private readonly IAuthenticationService _authenticationService;
         private readonly IDemographicsService _demographicsService;
+        private readonly IAddressService _addressService;
+        private readonly IOrganizationService _organizationService;
 
         public UserController(IUserService userService, IPatientService patientService,
             IPillDropperService pillDropperService, IRecoveryQuestionService recoveryQuestionService, 
-            IAuthenticationService authenticationService, IDemographicsService demographicsService) : base(userService)
+            IAuthenticationService authenticationService, IDemographicsService demographicsService, IAddressService addressService,
+            IOrganizationService organizationService) : base(userService)
         {
             _pillDropperService = pillDropperService;
             _patientService = patientService;
             _recoveryQuestionService = recoveryQuestionService;
             _authenticationService = authenticationService;
             _demographicsService = demographicsService;
+            _addressService = addressService;
+            _organizationService = organizationService;
         }
 
         public ActionResult Index()
@@ -34,32 +42,119 @@ namespace PillDropApplication.Controllers
             var users = UserService.GetAllUsers();
             var model = new UserModel();
 
-            model.Users = users;
+            model.Users = users.OrderByDescending(x => x.ModifiedAt).ToList();
 
             return View(model);
         }
         public ActionResult View(long id)
         {
+            var user = UserService.GetById(id);
+            var userModel = new UserModel(user);
+
+            if (user.RoleType.Equals(RoleType.Patient))
+            {
+                return View("ViewPatient", userModel);
+            }
+            if (user.RoleType.Equals(RoleType.PillDropper))
+            {
+                return View("View", userModel);
+            }
 
             return View(" ");
+            
         }
+        [HttpGet]
         public ActionResult Edit(long id)
         {
+            var user = UserService.GetById(id);
+            var userModel = new UserModel(user);
+
+            if (user.RoleType.Equals(RoleType.Patient))
+            {
+                return View("EditPatient", userModel);
+            }
+            if (user.RoleType.Equals(RoleType.PillDropper))
+            {
+                return View("EditPillDropper", userModel);
+            }
 
             return View(" ");
         }
+       
         public ActionResult Delete(long id)
         {
+            var user = UserService.GetById(id);
+            user.Status = EntityStatus.InActive;
+            UserService.SaveOrUpdate(user);
 
-            return View(" ");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserModel model)
+        public ActionResult EditPatient(UserModel model)
         {
+            var user = UserService.GetById(model.Id);
+            user.Update(model);
+            UserService.SaveOrUpdate(user);
 
-            return View(" ");
+            var address = _addressService.GetUserAddressById(model.Address.Id) ?? new Address{ User = user};
+
+            var addressModel = new AddressModel(model.Address);
+            var patient = _patientService.GetPatientById(model.Patient.Id) ?? new Patient { User = user};
+            var patientModel = new PatientModel(model.Patient);
+            var demographics = _demographicsService.GetById(model.Patient.Demography.Id) ??  new Demography();
+            var demographicsModel = new DemographicsModel(model.Patient.Demography);
+            
+            
+            demographics.Update(demographicsModel);
+            _demographicsService.SaveOrUpdate(demographics);
+            patient.Update(patientModel);
+
+            address.Update(addressModel);
+            _addressService.SaveOrUpdate(address);
+
+            patient.SetDemographics(demographics);
+            _patientService.SaveOrUpdate(patient);
+
+            user.SetAddress(address);
+            user.SetPatient(patient);
+            
+            user.Update(model);
+            UserService.SaveOrUpdate(user);
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPillDropper(UserModel model)
+        {
+            var user = UserService.GetById(model.Id);
+            var address = _addressService.GetUserAddressById(user.Address.Id) ??
+                          new Address
+                          {
+                              Line1 = model.Address.Line1,
+                              Line2 = model.Address.Line2,
+                              Line3 = model.Address.Line3,
+                              Line4 = model.Address.Line4,
+                              Line5 = model.Address.Line5,
+                              Province = model.Address.Province,
+                              City = model.Address.City,
+                              ZipCode = model.Address.ZipCode,
+                              User = user
+                          }; 
+            var pillDropper = _pillDropperService.GetPillDropperByUserId(user.PillDropper.Id);
+            var pillDropperModel = new PillDropperModel(model.PillDropper);
+            var addressModel = new AddressModel(model.Address);
+
+            pillDropper.Update(pillDropperModel);
+            _pillDropperService.SaveOrUpdate(pillDropper);
+            address.Update(addressModel);
+
+            user.Update(model);
+            UserService.SaveOrUpdate(user);
+
+            return RedirectToAction("Index");
         }
         public ActionResult ListAjaxHandler()
         {
@@ -92,8 +187,12 @@ namespace PillDropApplication.Controllers
         public ActionResult Create()
         {
             var model = new UserModel();
+            //var organizationList = _organizationService.GetOrganizations();
             model.RoleList = GetRoleList();
-
+            var list = Enum.GetValues(typeof(RoleType)).Cast<RoleType>();
+            model.OrganizationList = list.Select(item => new SelectListItem { Selected = false, Text = item.GetEnumDescription(),
+                Value = item.ToString() }).ToList();
+           
             return View(model);
         }
         public ActionResult Patient()
@@ -114,10 +213,20 @@ namespace PillDropApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(UserModel model)
         {
-            var models = model;
-           
-            //user.
-            //_userService.SaveOrUpdate();
+          
+            var user = new User
+            {
+                Email = model.Email,
+                Name = model.Name,
+                Surname = model.Surname,
+                Number = model.Number,
+                Status = EntityStatus.Active,
+                RoleType = RoleType.Patient,
+                
+            };
+
+            UserService.SaveOrUpdate(user);
+
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -142,8 +251,7 @@ namespace PillDropApplication.Controllers
                 StandNumber = model.Patient.Demography.StandNumber,
                 Code = model.Patient.Demography.Code,
                 Gps = model.Patient.Demography.Gps,
-                Location = model.Patient.Demography.Location
-
+                
             };
             _demographicsService.SaveOrUpdate(demographics);
 
@@ -151,15 +259,37 @@ namespace PillDropApplication.Controllers
             {
                 Age = model.Patient.Age,
                 IsMedicalAid = model.Patient.IsMedicalAid,
-                User = user,
                 Gender = model.Patient.Gender,
-                Demography = demographics,
                 ICD = model.Patient.ICD
             };
-            
+
+            patient.SetDemographics(demographics);
+            patient.SetUsers(user);
+
             _patientService.SaveOrUpdate(patient);
 
-            UserService.SetupEmail(user);
+            var address = new Address
+            {
+                Line1 = model.Address.Line1,
+                Line2 = model.Address.Line2,
+                Line3 = model.Address.Line3,
+                Line4 = model.Address.Line4,
+                Line5 = model.Address.Line5,
+                Province = model.Address.Province,
+                City = model.Address.City,
+                ZipCode = model.Address.ZipCode,
+                User = user
+            };
+
+            _addressService.SaveOrUpdate(address);
+
+            user.SetPatient(patient);
+            user.SetAddress(address);
+            UserService.SaveOrUpdate(user);
+
+            var path = string.Format("{0}Registration.txt", ConfigurationManager.AppSettings["email_templates_path"]);
+
+            UserService.SetupEmail(user, path);
 
             return RedirectToAction("Index");
         }
@@ -173,7 +303,7 @@ namespace PillDropApplication.Controllers
                 Name = model.Name,
                 Surname = model.Surname,
                 Number = model.Number,
-                Status = EntityStatus.InActive,
+                Status = EntityStatus.Active,
                 RoleType = RoleType.PillDropper
 
             };
@@ -187,9 +317,29 @@ namespace PillDropApplication.Controllers
                 VetteCertificate = model.PillDropper.VetteCertificate
                  
             };
+            var address = new Address
+            {
+                Line1 = model.Address.Line1,
+                Line2 = model.Address.Line2,
+                Line3 = model.Address.Line3,
+                Line4 = model.Address.Line4,
+                Line5 = model.Address.Line5,
+                Province = model.Address.Province,
+                City = model.Address.City,
+                ZipCode = model.Address.ZipCode,
+                User = user
+            };
 
+            _addressService.SaveOrUpdate(address);
             _pillDropperService.SaveOrUpdate(pillDropper);
-            UserService.SetupEmail(user);
+
+            user.SetPillDropper(pillDropper);
+            user.SetAddress(address);
+            UserService.SaveOrUpdate(user);
+
+            var path = string.Format("{0}Registration.txt", ConfigurationManager.AppSettings["email_templates_path"]);
+
+            UserService.SetupEmail(user, path);
 
             return RedirectToAction("Index");
         }

@@ -10,10 +10,13 @@ namespace PillDrop.Implementation.Persistence
         {
             Table("[User]");
             Id(x => x.Id).GeneratedBy.Identity().Column("id");
+            References(x => x.Organization).Column("organization_id");
             //References(x => x.RecoveryQuestion).Column("recovery_question_id");
             References(x => x.Patient).Column("patient_id");
+            References(x => x.Address).Column("address_id");
             References(x => x.PillDropper).Column("pilldropper_id");
             Map(x => x.Name).Column("name");
+            Map(x => x.Gender).Column("gender").CustomType<Gender>();
             Map(x => x.Surname).Column("surname");
             Map(x => x.Email).Column("email");
             Map(x => x.Number).Column("contact_number");
@@ -22,8 +25,12 @@ namespace PillDrop.Implementation.Persistence
             Map(x => x.PasswordHash).Column("password_hash");
             Map(x => x.RecoveryQuestionAnswer).Column("recovery_question_answer");
             Map(x => x.TemporaryPassword).Column("temporary_password");
+
             Map(x => x.CreatedAt).Column("created_at");
             Map(x => x.ModifiedAt).Column("modified_at");
+
+            HasMany(x => x.UserPrescriptions).AsBag().LazyLoad().KeyColumn("prescription_id").Cascade.AllDeleteOrphan();
+
         }
 
     }

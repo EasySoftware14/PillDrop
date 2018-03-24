@@ -1,0 +1,8 @@
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\bin\Release\PillDrop.Resources.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\bin\Release\PillDrop.Resources.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.csprojResolveAssemblyReference.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.Resources.resources
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.csproj.GenerateResource.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.csproj.CoreCompileInputs.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropApplication\PillDrop.Resources\obj\Release\PillDrop.Resources.pdb

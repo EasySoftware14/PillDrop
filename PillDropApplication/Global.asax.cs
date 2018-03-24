@@ -34,7 +34,7 @@ namespace PillDropApplication
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
             StructureMapBootStrapper.Bootstrap();
-            ConfigureApplication(GlobalConfiguration.Configuration);
+            //ConfigureApplication(GlobalConfiguration.Configuration);
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             FluentValidationModelValidatorProvider.Configure();
 

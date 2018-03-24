@@ -1,4 +1,6 @@
-﻿using PillDrop.Domain.Entities;
+﻿using System.Collections.Generic;
+using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 
 namespace PillDrop.Domain.Contracts.Services
 {
@@ -6,7 +8,8 @@ namespace PillDrop.Domain.Contracts.Services
     {
         void SaveOrUpdate(Patient user);
         long Save(Patient user);
-        //void SetupEmail(User user);
-
+        Patient GetPatientById(long userId);
+        IList<PatientDataModel> GetAllPatients();
+      
     }
 }

@@ -1,0 +1,137 @@
+﻿@model PillDrop.Domain.Presentation.UserModel
+
+@{
+    ViewBag.Title = "Edit Patient";
+    ViewBag.Heading1 = "Edit Patient";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Edit", "Patient", null, FormMethod.Post, new { @id = "patient-form", @class = "form", @Required = "required" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(x => x.Address.Id)
+    @Html.HiddenFor(x => x.Patient.Id)
+    @Html.HiddenFor(x => x.Patient.Demography.Id)
+
+    <br />
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Name</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Surname</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Gender</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Gender, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Age</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Age, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Mobile Contact Number</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Number, new { @class = "form-control", @required = "required", @digits = true })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Email Address</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @*<input type="email" placeholder="Enter your email"  />*@
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required", @validemail = "true", @placeholder = "Enter your email" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> GPS</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.Gps, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> ICD</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.ICD, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Residential Address</label>
+                <div class="input-with-icon">
+                    @Html.HiddenFor(m => m.Address.Type, new { @Id = "HomeAddressType" })
+                    @Html.TextBoxFor(m => m.Address.Line1, new { @class = "form-control", @required = "required", @id = "homeLine1", @placeholder = "Line 1" })
+                    @Html.TextBoxFor(m => m.Address.Line2, new { @class = "form-control", @id = "homeLine2", @placeholder = "Line 2" })
+                    @Html.TextBoxFor(m => m.Address.Line3, new { @class = "form-control", @id = "homeLine3", @placeholder = "Line 3" })
+                    @Html.TextBoxFor(m => m.Address.Line4, new { @class = "form-control", @id = "homeLine4", @placeholder = "Line 4" })
+                    @Html.TextBoxFor(m => m.Address.Line5, new { @class = "form-control", @id = "homeLine5", @placeholder = "Line 5" })
+                </div>
+            </div>
+            <div class="form-group">
+                <br />
+                <label class="form-label"><span class="text-error">*</span> Province</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.Province, new { @class = "form-control", @required = "required", @id = "homeProvince" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="form-label"><span class="text-error">*</span> City</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.City, new { @class = "form-control", @required = "required", @id = "homeCity" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Zip / Postal code</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.ZipCode, new { @class = "form-control", @required = "required", @id = "homeZip", @alphaandnumerics = true })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Stand Number</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.StandNumber, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Code</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.Code, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Have Medical Aid? @Html.CheckBoxFor(m => m.Patient.IsMedicalAid, new { @class = "checkbox" })</label>
+            </div>
+            <div class="form-group">
+                <a href="/" id="close" class="btn btn-primary"> Cancel</a>
+                <button type="submit" class="btn btn-success"> Update</button>
+            </div>
+            <br />
+
+        </div>
+    </div>
+}

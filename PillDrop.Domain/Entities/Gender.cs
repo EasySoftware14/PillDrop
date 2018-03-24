@@ -1,8 +1,8 @@
 ﻿namespace PillDrop.Domain.Entities
 {
-    public class Gender : Entity
+    public enum Gender
     {
-        public virtual string Name { get; set; }
-
+        Male = 1,
+        Female
     }
 }

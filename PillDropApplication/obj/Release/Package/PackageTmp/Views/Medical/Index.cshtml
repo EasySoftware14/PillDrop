@@ -1,0 +1,63 @@
+﻿@model PillDropApplication.Models.UserPrescriptionModel
+
+@{
+    ViewBag.Heading1 = "Manage Medication";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br/>
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-medkit"></i> Medication
+        <span style="margin-left: 755px">
+            <a href="/medical/assign" class="btn btn-outline-primary"> Setup Medication</a>
+        </span>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Patient Surname</th>
+                <th>Date Of Collection</th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var emp in Model.UserPrescriptions)
+            {
+                var converted = emp.DateOfCollection.ToShortDateString();
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => emp.User.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => emp.User.Surname)
+                    </td>
+                    @if (default(DateTime) != emp.DateOfCollection)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => converted)
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="/medical/Edit/@emp.Id"> Edit</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.DateCollectionSet)
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-success" href="/medical/setcollection/@emp.Id"> Set Collection</a>
+                        </td>
+                    }
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

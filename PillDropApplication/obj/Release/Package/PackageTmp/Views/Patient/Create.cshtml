@@ -1,0 +1,181 @@
+﻿@model PillDrop.Domain.Presentation.UserModel
+
+@{
+    ViewBag.Heading1 = "Add Patient";
+    ViewBag.Title = "Patients";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Patient", null, FormMethod.Post, new { @id = "patient-form", @class = "form", @Required = "required" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Name</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Surname</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Gender</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.EnumDropDownListFor(m => m.Patient.Gender, "Choose gender...", new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Date of birth</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Age,"dd-MM-yy", new { @class = "form-control datepicker", @required = "required", @readonly = true })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Mobile Contact Number</label>
+                <div class="input-with-icon right">
+                    @Html.HiddenFor(m => m.Number)
+                    <table>
+                        <tr>
+                            <td> @Html.TextBoxFor(m => m.NationalCode, new {@class = "form-control", @readonly = "readonly", @required = "required", @digits = true, @id = "contact_number", @style = "width:70px"})</td>
+                            <td>@Html.DropDownListFor(m => m.CellCode, Model.NetworkCodes, "select...", new {@class = "form-control"})</td>
+                            <td>@Html.TextBoxFor(m => m.CellNumber, new {@class = "form-control", @minlength = 7, @maxlength = 7, @numeric = "true"})</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Email Address</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @*<input type="email" placeholder="Enter your email"  />*@
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required", @validemail = "true", @placeholder = "Enter your email" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> GPS</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.Gps, new { @class = "form-control", @required = "required" , @readonly = true})
+                </div>
+                <button id="getGps" class="btn btn-success"> Get GPS</button>
+            </div>*@
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> ICD</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.ICD, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <a href="/" id="close" class="btn btn-primary"> Cancel</a>
+                <button type="submit" class="btn btn-success"> Submit</button>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Residential Address</label>
+                <div class="input-with-icon">
+                    @Html.HiddenFor(m => m.Address.Type, new { @Id = "HomeAddressType" })
+                    @Html.TextBoxFor(m => m.Address.Line1, new { @class = "form-control", @required = "required", @id = "homeLine1", @placeholder = "Line 1" })
+                    @Html.TextBoxFor(m => m.Address.Line2, new { @class = "form-control", @required = "required", @id = "homeLine2", @placeholder = "Line 2" })
+                    @Html.TextBoxFor(m => m.Address.Line3, new { @class = "form-control", @id = "homeLine3", @placeholder = "Line 3" })
+                    @Html.TextBoxFor(m => m.Address.Line4, new { @class = "form-control", @id = "homeLine4", @placeholder = "Line 4" })
+                    @Html.TextBoxFor(m => m.Address.Line5, new { @class = "form-control", @id = "homeLine5", @placeholder = "Line 5" })
+                </div>
+            </div>
+            <div class="form-group">
+                <br />
+                <label class="form-label"><span class="text-error">*</span> Province</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.Province, new { @class = "form-control", @required = "required", @id = "homeProvince" })
+                </div>
+            </div>
+            <div class="form-group">
+                <br />
+                <label class="form-label"><span class="text-error">*</span> City</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.City, new { @class = "form-control", @required = "required", @id = "homeCity" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Zip / Postal code</label>
+                <div class="input-with-icon">
+                    @Html.TextBoxFor(m => m.Address.ZipCode, new { @class = "form-control", @required = "required", @id = "homeZip", @alphaandnumerics = true })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Stand Number</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.StandNumber, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Code</label>
+                <div class="input-with-icon right">
+                    <i class=""></i>
+                    @Html.TextBoxFor(m => m.Patient.Demography.Code, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label"><span class="text-error">*</span> Have Medical Aid ?</label>
+                <div class="checkbox">
+                    <i class="cr-icon glyphicon glyphicon-ok"></i>
+                    @Html.CheckBoxFor(m => m.Patient.IsMedicalAid, new { @class = "checkbox" })
+                </div>
+            </div>
+            <br />
+
+        </div>
+    </div>
+
+}
+    
+<script type="text/javascript">
+
+    
+    $(document).ready(function () {
+        var data = {
+            'cellc1': '060',
+            'cellc2': '084',
+            'cellc3': '074'
+        }
+
+        $("#contact_number").val("+27");
+        var s = $('<select />');
+
+        for(var val in data) {
+            if (data.hasOwnProperty(val)) {
+                $('<option />', { value: val, text: data[val] }).appendTo(s);
+            }
+        }
+
+        s.appendTo('body');
+
+        var curYear = (new Date()).getFullYear();
+        $('.datepicker').datepicker(
+            {
+                dateFormat: 'dd-MM-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1920:' + curYear
+            });
+       
+        $(".phone").text(function(i, text) {
+            return text.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+        });
+    });
+</script>
+
+

@@ -14,6 +14,7 @@ namespace PillDropApplication.Registries
         {
             For(typeof(IRepository<>)).Use(typeof(Repository<>));
             For<IApplicationConfiguration>().Singleton().Use<ApplicationConfiguration>();
+            For<IEmailNotificationService>().Use<EmailNotificationService>();
             For<IAuthenticationService>().Use<AuthenticationService>();
 
             For<IUserRepository>().Use<UserRepository>();
@@ -33,6 +34,21 @@ namespace PillDropApplication.Registries
 
             For<IDemographicsRepository>().Use<DemographicsRepository>();
             For<IDemographicsService>().Use<DemographicsService>();
+
+            For<IAddressRepository>().Use<AddressRepository>();
+            For<IAddressService>().Use<AddressService>();
+
+            For<IOrganizationRepository>().Use<OrganizatioRepository>();
+            For<IOrganizationService>().Use<OrganizationService>();
+
+            For<IPrescriptionRepository>().Use<PrescriptionRepository>();
+            For<IPrescriptionService>().Use<PrescriptionService>();
+
+            For<IMedicalRepository>().Use<MedicalRepository>();
+            For<IMedicalService>().Use<MedicalService>();
+
+            For<IUserPrescriptionRepository>().Use<UserPrescriptionRepository>();
+            For<IUserPrescriptionService>().Use<UserPrescriptionService>();
         }
     }
 }

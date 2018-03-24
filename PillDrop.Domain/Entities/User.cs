@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PillDrop.Domain.Contracts.Models;
 
 namespace PillDrop.Domain.Entities
 {
@@ -18,6 +19,8 @@ namespace PillDrop.Domain.Entities
         public virtual DateTime? LockedAt { get; set; }
         public virtual RoleType RoleType { get; set; }
         public virtual Patient Patient { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Organization Organization { get; set; }
         public virtual PillDropper PillDropper { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual IList<UserRole> UserRoles { get; set; }
@@ -38,12 +41,30 @@ namespace PillDrop.Domain.Entities
         public virtual RecoveryQuestion RecoveryQuestion { get; set; }
         public virtual string RecoveryQuestionAnswer { get; set; }
         public virtual bool IsSecondaryAdmin { get; set; }
+        public virtual IList<UserPrescription> UserPrescriptions { get; set; }
 
         public User()
         {
             UserRoles = new List<UserRole>();
             UserFeatures = new List<Feature>();
-            
+            UserPrescriptions = new List<UserPrescription>();
+
+        }
+        public virtual long GetOrganizationId()
+        {
+            return Organization.Id;
+        }
+        public virtual void SetPatient(Patient patiemt)
+        {
+            Patient = patiemt;
+        }
+        public virtual void SetPillDropper(PillDropper pillDropper)
+        {
+            PillDropper = pillDropper;
+        }
+        public virtual void SetAddress(Address address)
+        {
+            Address = address;
         }
         public virtual IList<string> GetRoles()
         {
@@ -63,8 +84,7 @@ namespace PillDrop.Domain.Entities
         }
         public virtual string GetRoleString()
         {
-            var roles = UserRoles.Select(x => x.Role.Name);
-            return string.Join(",", roles.ToArray());
+            return RoleType.ToString();
         }
         public virtual IEnumerable<Menu> GetModules()
         {
@@ -106,6 +126,15 @@ namespace PillDrop.Domain.Entities
         public virtual void ResetTemporaryPassword()
         {
             TemporaryPassword = null;
+        }
+        public virtual void Update(IUserModel model)
+        {
+            Id = model.Id;
+            Name = model.Name;
+            Email = model.Email;
+            Number = model.Number;
+            Designation = model.Designation;
+            IsSecondaryAdmin = model.IsSecondaryAdmin;
         }
     }
 

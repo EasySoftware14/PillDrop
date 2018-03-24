@@ -29,6 +29,11 @@ namespace PillDrop.Implementation.Implementation.Repository
             return FindBySpecification(new UserForPasswordSetupCriteria(email)).FirstOrDefault();
         }
 
+        public IList<User> GetUsersByRoleType(RoleType type)
+        {
+            return FindBySpecification(new GetUsersByRoleTypeCriteria(type)).ToList();
+        }
+
         public IList<User> GetAllUsers()
         {
             return FindBySpecification(new GetAllUsersCriteria()).ToList();

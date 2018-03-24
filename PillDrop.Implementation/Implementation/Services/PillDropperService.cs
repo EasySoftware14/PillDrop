@@ -1,6 +1,8 @@
-﻿using PillDrop.Domain.Contracts.Repositories;
+﻿using System.Collections.Generic;
+using PillDrop.Domain.Contracts.Repositories;
 using PillDrop.Domain.Contracts.Services;
 using PillDrop.Domain.Entities;
+using PillDrop.Domain.Models;
 
 namespace PillDrop.Implementation.Implementation.Services
 {
@@ -23,6 +25,16 @@ namespace PillDrop.Implementation.Implementation.Services
                 trans.Commit();
                 return id;
             }
+        }
+
+        public PillDropper GetPillDropperByUserId(long id)
+        {
+            return _pillDrooperRepository.Get(id);
+        }
+
+        public IList<PillDropperDataModel> GetAllPillDroppers()
+        {
+            return _pillDrooperRepository.GetAllPillDroppers();
         }
 
         public void SetupEmail(User user, string handler, string culture, string timezone)
