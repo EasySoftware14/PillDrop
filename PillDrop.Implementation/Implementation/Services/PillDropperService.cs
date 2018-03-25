@@ -29,7 +29,7 @@ namespace PillDrop.Implementation.Implementation.Services
 
         public PillDropper GetPillDropperByUserId(long id)
         {
-            return _pillDrooperRepository.Get(id);
+            return _pillDrooperRepository.GetPillDropperByUserId(id);
         }
 
         public IList<PillDropperDataModel> GetAllPillDroppers()

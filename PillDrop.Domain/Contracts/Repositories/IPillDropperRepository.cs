@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using PillDrop.Domain.Contracts.Models;
 using PillDrop.Domain.Entities;
 using PillDrop.Domain.Models;
 

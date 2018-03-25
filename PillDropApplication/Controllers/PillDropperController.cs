@@ -90,12 +90,15 @@ namespace PillDropApplication.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            return View();
+            var user = UserService.GetById(id);
+            var model = new UserModel(user);
+
+            return View(model);
         }
         public ActionResult View(long id)
         {
-            var pilldropper = _pillDropperService.GetPillDropperByUserId(id);
-            var model = new UserModel(pilldropper.User);
+            var user = UserService.GetById(id);
+            var model = new UserModel(user);
 
             return View(model);
         }

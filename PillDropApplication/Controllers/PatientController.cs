@@ -44,9 +44,8 @@ namespace PillDropApplication.Controllers
 
         public ActionResult View(long id)
         {
-            var patient = _patientService.GetPatientById(id);
-            var model = new UserModel(patient.User);
-            
+            var user = UserService.GetById(id);
+            var model = new UserModel(user);
 
             return View(model);
         }
@@ -162,8 +161,8 @@ namespace PillDropApplication.Controllers
         }
         public ActionResult Edit(long id)
         {
-            var patient = _patientService.GetPatientById(id);
-            var model = new UserModel(patient.User);
+            var user = UserService.GetById(id);
+            var model = new UserModel(user);
 
             return View(model);
         }
