@@ -118,7 +118,6 @@ C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\System.Web.Http.xml
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\PillDrop.Implementation.pdb
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\PillDrop.Implementation.dll.config
-C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\Iesi.Collections.xml
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\Microsoft.Threading.Tasks.xml
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\ayanda.sawulisi.MAXXOR\Documents\PillDropNew\PillDropApplication.Tests\bin\Debug\FluentNHibernate.xml
