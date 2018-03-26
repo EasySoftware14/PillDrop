@@ -12,6 +12,8 @@ namespace PillDropApplication.Models
         public string LicenceNumber { get; set; }
         public string LicencePlateNumber { get; set; }
         public bool VetteCertificate { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
 
         public PillDropperModel()
         {
@@ -23,6 +25,8 @@ namespace PillDropApplication.Models
             LicencePlateNumber = model.LicencePlateNumber;
             LicenceNumber = model.LicenceNumber;
             VetteCertificate = model.VetteCertificate;
+            Latitude = model.Latitude;
+            Longitude = model.Longitude;
         }
     }
 }

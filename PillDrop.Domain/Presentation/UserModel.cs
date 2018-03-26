@@ -38,6 +38,7 @@ namespace PillDrop.Domain.Presentation
         public bool IsSecondaryAdmin { get; set; }
         public bool UseTemporary { get; set; }
         public IList<SelectListItem> RoleList { get; set; }
+        public IList<SelectListItem> CodesList { get; set; }
         public IList<User> Users { get; set; }
         public IList<PatientDataModel> Patients { get; set; }
         public IList<PillDropperDataModel> PillDroppers { get; set; }
@@ -84,6 +85,26 @@ namespace PillDrop.Domain.Presentation
             Patient = user.Patient ?? new Patient();
             Gender = user.Gender;
         }
+
+        public List<SelectListItem> SetCode()
+        {
+            var enumList = new List<SelectListItem>();
+            enumList.Add(new SelectListItem { Text = "060" });
+            enumList.Add(new SelectListItem { Text = "074" });
+            enumList.Add(new SelectListItem { Text = "084" });
+            enumList.Add(new SelectListItem { Text = "083" });
+            enumList.Add(new SelectListItem { Text = "073" });
+            enumList.Add(new SelectListItem { Text = "081" });
+            enumList.Add(new SelectListItem { Text = "063" });
+            enumList.Add(new SelectListItem { Text = "071" });
+            enumList.Add(new SelectListItem { Text = "079" });
+            enumList.Add(new SelectListItem { Text = "061" });
+            enumList.Add(new SelectListItem { Text = "072" });
+            enumList.Add(new SelectListItem { Text = "078" });
+
+            return enumList;
+        }
+        
 
     }
 }

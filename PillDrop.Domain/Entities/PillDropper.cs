@@ -8,6 +8,8 @@ namespace PillDrop.Domain.Entities
         public virtual string LicenceNumber { get; set; }
         public virtual string LicencePlateNumber { get; set; }
         public virtual bool VetteCertificate { get; set; }
+        public virtual string Latitude { get; set; }
+        public virtual string Longitude { get; set; }
 
         public PillDropper()
         {}
@@ -17,6 +19,8 @@ namespace PillDrop.Domain.Entities
             LicenceNumber = model.LicenceNumber;
             LicencePlateNumber = model.LicencePlateNumber;
             VetteCertificate = model.VetteCertificate;
+            Latitude = model.Latitude;
+            Longitude = model.Longitude;
         }
     }
 }

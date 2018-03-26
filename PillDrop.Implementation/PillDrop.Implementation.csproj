@@ -33,6 +33,9 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\..\..\..\Workspace\IDP\src\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="GoogleMaps.LocationServices, Version=0.1.6329.16944, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.LocationServices.1.2.0.1\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.4.0.2\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -91,6 +94,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -133,6 +137,7 @@
     <Compile Include="Implementation\Repository\EmailArchiveRepository.cs" />
     <Compile Include="Implementation\Repository\DemographicsRepository.cs" />
     <Compile Include="Implementation\Repository\AddressRepository.cs" />
+    <Compile Include="Implementation\Repository\GeographicalRepository.cs" />
     <Compile Include="Implementation\Repository\MedicalRepository.cs" />
     <Compile Include="Implementation\Repository\OrganizatioRepository.cs" />
     <Compile Include="Implementation\Repository\PillDropperRepository.cs" />
@@ -144,6 +149,7 @@
     <Compile Include="Implementation\Services\DemographicsService.cs" />
     <Compile Include="Implementation\Services\AddressService.cs" />
     <Compile Include="Implementation\Services\EmailNotificationService.cs" />
+    <Compile Include="Implementation\Services\GeographicalService.cs" />
     <Compile Include="Implementation\Services\MedicalService.cs" />
     <Compile Include="Implementation\Services\OrganizationService.cs" />
     <Compile Include="Implementation\Services\PrescriptionService.cs" />
@@ -169,7 +175,9 @@
     <Compile Include="Persistence\UserPrescriptionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PillDrop.Domain\PillDrop.Domain.csproj">
       <Project>{E1D0BA52-BE4D-4DC3-922F-78117D043F54}</Project>

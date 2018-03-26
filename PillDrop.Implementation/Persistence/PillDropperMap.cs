@@ -1,5 +1,4 @@
 ﻿using FluentNHibernate.Mapping;
-using PillDrop.Domain;
 using PillDrop.Domain.Entities;
 
 namespace PillDrop.Implementation.Persistence
@@ -13,6 +12,8 @@ namespace PillDrop.Implementation.Persistence
             References(x => x.User).Column("user_id");
 
             Map(x => x.LicenceNumber).Column("licence_number");
+            Map(x => x.Latitude).Column("latitude");
+            Map(x => x.Longitude).Column("longitude");
             Map(x => x.VetteCertificate).Column("vette_certificate");
             Map(x => x.LicencePlateNumber).Column("licence_plate_number");
             Map(x => x.CreatedAt).Column("created_at");

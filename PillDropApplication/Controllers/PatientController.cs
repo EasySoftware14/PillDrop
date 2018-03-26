@@ -22,13 +22,15 @@ namespace PillDropApplication.Controllers
         private readonly IAddressService _addressService;
         private readonly IPatientService _patientService;
         private readonly IDemographicsService _demographicsService;
+        private readonly IGeographicalService _geographicalService;
 
         public PatientController(IUserService userService, IAddressService addressService,
-            IPatientService patientService, IDemographicsService demographicsService) : base(userService)
+            IPatientService patientService, IDemographicsService demographicsService, IGeographicalService geographicalService ) : base(userService)
         {
             _addressService = addressService;
             _patientService = patientService;
             _demographicsService = demographicsService;
+            _geographicalService = geographicalService;
         }
 
         public ActionResult Index()
@@ -53,29 +55,15 @@ namespace PillDropApplication.Controllers
         public ActionResult Create()
         {
             var model = new UserModel();
-            var enumList = new List<SelectListItem>();
-            enumList.Add(new SelectListItem {Text = "060"});
-            enumList.Add(new SelectListItem {Text = "074"});
-            enumList.Add(new SelectListItem {Text = "084"});
-            enumList.Add(new SelectListItem {Text = "083"});
-            enumList.Add(new SelectListItem {Text = "073"});
-            enumList.Add(new SelectListItem {Text = "081"});
-            enumList.Add(new SelectListItem {Text = "063"});
-            enumList.Add(new SelectListItem {Text = "071"});
-            enumList.Add(new SelectListItem {Text = "079"});
-            enumList.Add(new SelectListItem {Text = "061"});
-            enumList.Add(new SelectListItem {Text = "072"});
-            enumList.Add(new SelectListItem {Text = "078"});
-
-            model.NetworkCodes = enumList.ToList();
+            
+            model.NetworkCodes = model.SetCode();
 
             return View(model);
         }
 
         public MapPoint GetLatitudeLongitude(string address)
         {
-            var service = new GoogleLocationService("AIzaSyCkJcGWSqlARduCa__1aEg4MPmfaoylQN0");
-            var mapPoint = service.GetLatLongFromAddress(address);
+           var mapPoint = _geographicalService.GetMapPoints(address);
 
             return mapPoint;
         }

@@ -15,7 +15,7 @@
                 </button>
 
             </div>
-            <div class="modal-body" style="width: auto">
+            <div class="modal-body" style="width: 750px">
                 @using (Html.BeginForm("Create", "PillDropper", null, FormMethod.Post, new { @id = "pilldropper-form", @class = "form", @Required = "required" }))
                 {
                     @Html.AntiForgeryToken()
@@ -39,8 +39,14 @@
                             <div class="form-group">
                                 <label class="form-label"><span class="text-error">*</span> Mobile Contact Number</label>
                                 <div class="input-with-icon right">
-                                    <i class=""></i>
-                                    @Html.TextBoxFor(m => m.Number, new { @class = "form-control", @required = "required", @digits = true, @id="contact_number" })
+                                    @Html.HiddenFor(m => m.Number)
+                                    <table>
+                                        <tr>
+                                            <td> @Html.TextBoxFor(m => m.NationalCode, new {@class = "form-control", @readonly = "readonly", @required = "required", @digits = true, @id = "contact_number", @style = "width:70px"})</td>
+                                            <td>@Html.DropDownListFor(m => m.CellCode, Model.NetworkCodes, "select...", new {@class = "form-control"})</td>
+                                            <td>@Html.TextBoxFor(m => m.CellNumber, new {@class = "form-control", @minlength = 7, @maxlength = 7, @numeric = "true"})</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -127,10 +133,7 @@
 
     $(document).ready(function () {
         $("#registerModal").modal({ backdrop: "static", keyboard: false });
-
-        $("#contact_number").onfocusout(function () {
-            alert('')
-            numberValidationCheck(this.val());
-        });
+        $("#contact_number").val("+27");
+        
     });
 </script>

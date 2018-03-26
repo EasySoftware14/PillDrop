@@ -49,6 +49,9 @@ namespace PillDropApplication.Registries
 
             For<IUserPrescriptionRepository>().Use<UserPrescriptionRepository>();
             For<IUserPrescriptionService>().Use<UserPrescriptionService>();
+
+            For<IGeographicalRepository>().Use<GeographicalRepository>();
+            For<IGeographicalService>().Use<GeographicalService>();
         }
     }
 }

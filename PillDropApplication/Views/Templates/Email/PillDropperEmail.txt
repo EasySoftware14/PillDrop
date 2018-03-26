@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<title> Pilldropper Setup Confirmation</title>
+	<title> %NAME% Setup Confirmation</title>
 </head>
 
 <body style="margin:0px;padding:0px;">
@@ -12,7 +12,7 @@
 		Dear %USER%
 	</p>
 	<p>
-		Please be advised that you have been added as an applicant to serve as a PillDropper, please submit the following certified copies if have not done so:		
+		Please be advised that you have been added as an applicant to serve as a PillDropper on the %DATE%, please submit the following certified copies if have not done so:		
 	</p>	
 	<p>
 		1. Driver Licence<br/>
@@ -37,6 +37,9 @@
 	<br/>
 	<br/>
 		<img src='%FOOTERIMAGE%'/>
+	<br/>
+	<br/>
+		This message was sent to %ADMINEMAIL%
 	<br/>
 	
 </div>

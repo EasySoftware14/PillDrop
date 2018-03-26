@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Globalization;
 using System.Web.Mvc;
+using GoogleMaps.LocationServices;
 using PillDrop.Domain;
 using PillDrop.Domain.Contracts.Services;
 using PillDrop.Domain.Entities;
@@ -12,16 +15,21 @@ namespace PillDropApplication.Controllers
     {
         private readonly IAddressService _addressService;
         private readonly IPillDropperService _pillDropperService;
+        private readonly IGeographicalService _geographicalService;
 
-        public PillDropperController(IUserService userService, IAddressService addressService, IPillDropperService pillDropperService) : base(userService)
+        public PillDropperController(IUserService userService, IAddressService addressService, IPillDropperService pillDropperService, IGeographicalService geographicalService) : base(userService)
         {
             _addressService = addressService;
             _pillDropperService = pillDropperService;
+            _geographicalService = geographicalService;
         }
 
         public ActionResult Index()
         {
-            return View("Create");
+            var model = new UserModel();
+            model.NetworkCodes = model.SetCode();
+
+            return View("Create", model);
         }
         public ActionResult List()
         {
@@ -40,12 +48,27 @@ namespace PillDropApplication.Controllers
         [HttpPost]
         public ActionResult Create(UserModel model)
         {
+            var line1 = model.Address.Line1;
+            var line2 = model.Address.Line2;
+
+            var latLong = _geographicalService.GetMapPoints(line1 + "," + line2);
+            var latitude = string.Empty;
+            var longitude = string.Empty;
+
+            if (latLong != null)
+            {
+                latitude = Convert.ToString(latLong.Latitude, CultureInfo.InvariantCulture);
+                longitude = Convert.ToString(latLong.Longitude, CultureInfo.InvariantCulture);
+            }
+
+            var number = model.NationalCode + model.CellCode + model.CellNumber;
+
             var user = new User
             {
                 Email = model.Email,
                 Name = model.Name,
                 Surname = model.Surname,
-                Number = model.Number,
+                Number = number,
                 Status = EntityStatus.InActive,
                 RoleType = RoleType.PillDropper,
                 Gender = model.Gender
@@ -58,7 +81,9 @@ namespace PillDropApplication.Controllers
                 LicencePlateNumber = model.PillDropper.LicencePlateNumber,
                 LicenceNumber = model.PillDropper.LicenceNumber,
                 User = user,
-                VetteCertificate = model.PillDropper.VetteCertificate
+                VetteCertificate = model.PillDropper.VetteCertificate,
+                Latitude = latitude,
+                Longitude = longitude
 
             };
             var address = new Address
@@ -90,6 +115,9 @@ namespace PillDropApplication.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
+            var distance = _geographicalService.GetCoordinate(
+                new MapPoint {Latitude = -34.0169629, Longitude = 18.636389},
+                new MapPoint {Latitude = -34.0169629, Longitude = 18.636389});
             var user = UserService.GetById(id);
             var model = new UserModel(user);
 
