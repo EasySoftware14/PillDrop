@@ -1,0 +1,2 @@
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Domain\obj\Debug\PillDrop.Domain.csprojAssemblyReference.cache
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Domain\obj\Debug\PillDrop.Domain.csproj.CoreCompileInputs.cache

@@ -1,0 +1,8 @@
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\bin\Debug\PillDrop.Resources.dll
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\bin\Debug\PillDrop.Resources.pdb
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.csprojAssemblyReference.cache
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.Resources.resources
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.GenerateResource.cache
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.csproj.CoreCompileInputs.cache
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.dll
+C:\Users\E566035\Documents\Sawulisi\Projects\PillDrop\PillDrop.Resources\obj\Debug\PillDrop.Resources.pdb
